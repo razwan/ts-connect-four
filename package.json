@@ -1,0 +1,19 @@
+{
+  "name": "ts-connect-four",
+  "version": "1.0.0",
+  "description": "Connect Four game",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/razwan/ts-connect-four.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/razwan/ts-connect-four/issues"
+  },
+  "homepage": "https://github.com/razwan/ts-connect-four#readme"
+}
