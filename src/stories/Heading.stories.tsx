@@ -1,0 +1,35 @@
+import Heading from "../components/Header";
+import { IHeading } from "../components/Header/Heading";
+import { Story } from '@storybook/react';
+
+export default {
+  title: 'Heading',
+  component: Heading,
+}
+
+const Template: Story<IHeading> = (args: any) => <Heading {...args} />;
+
+export const ExtraSmallHeading = Template.bind({});
+ExtraSmallHeading.args = {
+  size: 'XS',
+  children: 'This is a text'
+};
+
+export const SmallHeading = Template.bind({});
+SmallHeading.args = {
+  size: 'S',
+  children: 'This is a text'
+};
+
+
+export const MediumHeading = Template.bind({});
+MediumHeading.args = {
+  size: 'M',
+  children: 'This is a text'
+};
+
+export const LargeHeading = Template.bind({});
+LargeHeading.args = {
+  size: 'L',
+  children: 'This is a text'
+};
