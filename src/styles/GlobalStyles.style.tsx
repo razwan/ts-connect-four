@@ -1,30 +1,27 @@
 import { createGlobalStyle } from "styled-components";
 
+import { Normalize } from "./Normalize.style";
+import { ColorVariables } from "./ColorVariables.style";
+import { Typography } from "./Typography.style";
+
 export const GlobalStyles = createGlobalStyle`
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  ${ Normalize }
+  ${ ColorVariables }
+  ${ Typography }
 
-body {
-  font-family: 'Space Grotesk', sans-serif;
-}
+  html, body, #root {
+    height: 100%;
+  }
 
-h1, h2, h3, h4, h5, p, span {
-  font-family: 'Space Grotesk', sans-serif;
-}
+  #root {
+    display: grid;
+    grid-template-columns: minmax(68px, 1fr) minmax(auto, 1040px) minmax(68px, 1fr);
+    grid-template-rows: auto 1fr 100px 50px;
+  }
 
-h1, h2, h3, h4, h5 {
-  font-weight: 700;
-}
-
-h4 {
-  font-size: 32px;
-  font-weight: 800;
-}
+  body {
+    background: var(--color-bg-light);
+  }
 
 .card-label {
   margin: 0 5px 0 0;

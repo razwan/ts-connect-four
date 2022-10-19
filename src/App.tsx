@@ -1,13 +1,14 @@
 import React from 'react';
-import Heading from './components/Header';
+import { Header, Game, Footer } from './components';
 import { GlobalStyles } from './styles/GlobalStyles.style';
 
-
-function App() {
+const App = () => {
   return (
     <>
       <GlobalStyles />
-      <Heading color='hotpink' size='L'>Please remove me</Heading>
+      <Header />
+      <Game />
+      <Footer />
     </>
   );
 }

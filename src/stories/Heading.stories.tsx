@@ -1,5 +1,5 @@
-import Heading from "../components/Header";
-import { IHeading } from "../components/Header/Heading";
+import Heading from "../components/Heading";
+import { IHeading } from "../components/Heading/Heading";
 import { Story } from '@storybook/react';
 
 export default {
