@@ -1,4 +1,4 @@
-import ScoreCardEmoji from "../components/ScoreCardEmoji/ScoreCardEmoji";
+import {ScoreCardEmoji} from "../components";
 import {Story} from "@storybook/react";
 
 export default {

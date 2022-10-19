@@ -12,7 +12,7 @@ export const LargeHeading = styled.h1<IHeadingWrapper>`
 
 export const MediumHeading = styled.h2<IHeadingWrapper>`
   color: ${(props) => props.color};
-  font-size: 1.5rem;
+  font-size: 2.5rem;
   margin: 0px;
 `;
 
