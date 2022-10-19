@@ -1,3 +1,3 @@
-import {ScoreCardEmoji} from "./ScoreCardEmoji";
+import ScoreCardEmoji from "./ScoreCardEmoji";
 
 export default ScoreCardEmoji;
