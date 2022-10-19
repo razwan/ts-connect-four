@@ -7,5 +7,5 @@ grid-column: 1 / -1;
 grid-row: 3 / span 2;
 border-top-left-radius: 60px;
 border-top-right-radius: 60px;
-background: var(--color-bg-dark);
+background: ${({ theme }) => theme.colors.darkPurple};
 `;

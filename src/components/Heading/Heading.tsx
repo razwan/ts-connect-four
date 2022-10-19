@@ -17,7 +17,7 @@ const Heading: React.FC<IHeading> = ({
   switch (size) {
     case 'L':
       return (
-        <LargeHeading color={color} className={` ${className}`}>
+        <LargeHeading color={color} className={`${className}`}>
           {children}
         </LargeHeading>
       );
@@ -35,7 +35,7 @@ const Heading: React.FC<IHeading> = ({
       );
     default:
       return (
-        <XSmallHeading color={color} className={` ${className}`}>
+        <XSmallHeading color={color} className={`${className}`}>
           {children}
         </XSmallHeading>
       );
