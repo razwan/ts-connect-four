@@ -1,11 +1,9 @@
 import styled from "styled-components";
+import Heading from "../Heading";
 
-interface ScoreCardWrapper {}
 
-export const LeftScoreCard = styled.div<ScoreCardWrapper>`
+export const ScoreCardStyle = styled.div`
   background-color: #ffffff;
-  width: 142px;
-  height: 81px;
   border: 3px solid black;
   box-shadow: 0px 10px 0px #000000;
   border-radius: 20px;
@@ -15,38 +13,14 @@ export const LeftScoreCard = styled.div<ScoreCardWrapper>`
   justify-content: center;
 `;
 
-export const LeftScoreCardWrapper = styled.div`
-  width: 72px;
-  height: 61px;
+export const ScoreCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0px;
+  padding: 20px;
 `;
 
-export const RightScoreCard = styled.div<ScoreCardWrapper>`
-  background-color: #ffffff;
-  width: 142px;
-  height: 81px;
-  border: 3px solid black;
-  box-shadow: 0px 10px 0px #000000;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const RightScoreCardWrapper = styled.div`
-  width: 80px;
-  height: 61px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0px;
-`;
 
 export const ScoreCardH3 = styled.h3`
   margin: 0px;
