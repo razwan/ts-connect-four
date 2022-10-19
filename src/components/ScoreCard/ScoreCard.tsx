@@ -3,7 +3,7 @@ import  Heading  from "../Heading/Heading";
 
 import {ScoreCardH2, ScoreCardH3, ScoreCardStyle, ScoreCardWrapper } from "./ScoreCard.style";
 
-import {ScoreCardEmoji} from "../index";
+import ScoreCardEmoji from "../ScoreCardEmoji/ScoreCardEmoji";
 
 export interface PScoreCard {
   position: "left" | "right";
