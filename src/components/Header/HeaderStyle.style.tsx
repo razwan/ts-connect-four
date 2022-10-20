@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
 export const HeaderStyle = styled.div`
-    height: 150px; /* shouldn't be hardcoded */
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr auto 1fr;
+
+    --vertical-padding: 50px;
+    
+    padding-top: var(--vertical-padding);
+    padding-bottom: var(--vertical-padding); 
+
+    > :last-child {
+        display: flex;
+        flex-direction: row-reverse;
+    }
 `;
