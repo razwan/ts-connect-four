@@ -32,6 +32,11 @@ export const Layout =`
 
 .layout__scorecard {
     grid-row: 2;
+    padding-bottom: 50px;
+    
+    @media only screen and (min-width: 768px) {
+        padding-bottom: 32px;
+    }
 
     @media only screen and (min-width: 1140px) {
         grid-row: 3;
@@ -42,7 +47,8 @@ export const Layout =`
 
 .layout__scorecard-1 {
     grid-column: 3;
-
+    padding-right: 18px;
+    
     @media only screen and (min-width: 1140px) {
         grid-column: 2;
         padding-right: 60px;
@@ -51,11 +57,14 @@ export const Layout =`
 
 .layout__scorecard-2 {
     grid-column: 4;
+    padding-left: 18px;
 
     @media only screen and (min-width: 1140px) {
         grid-column: 5;
         padding-left: 60px;
     }
+
+    
 }
 
 .layout__footer {
