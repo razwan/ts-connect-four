@@ -7,3 +7,6 @@ export { default as Game } from "./Game";
 export { default as Logo } from "./Logo";
 export { default as ScoreCard } from "./ScoreCard";
 export { default as ScoreCardEmoji } from "./ScoreCardEmoji"; 
+export { default as Modal } from "./Modal";
+export { default as PauseMenu } from "./PauseMenu";
+export { default as StartMenu } from "./StartMenu";
