@@ -1,5 +1,11 @@
 import React from 'react';
 import { LargeHeading, MediumHeading, SmallHeading, XSmallHeading } from './Heading.style';
+export {
+  LargeHeading,
+  MediumHeading,
+  SmallHeading,
+  XSmallHeading,
+} from "./Heading.style";
 
 export interface IHeading {
   size: 'L' | 'M' | 'S' | 'XS';
