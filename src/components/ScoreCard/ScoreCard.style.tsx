@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  position: relative;
+  
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  img {
+    position: absolute;
+  }
 `;
 
 
