@@ -1,13 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-
 export const ScoreCardWrapper = styled.div`
   background-color: #ffffff;
   border: 3px solid black;
@@ -18,6 +10,8 @@ export const ScoreCardWrapper = styled.div`
   align-items: center;
   justify-content: center;
   padding: 5px 40px;
+  position: relative;
+  margin: 2rem;
 `;
 
 
