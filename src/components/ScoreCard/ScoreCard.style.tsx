@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { MediumHeading } from "../Heading/Heading.style";
 import { theme } from "../../styles/Theme.style";
 
 export const ScoreCardWrapper = styled.div`
@@ -19,8 +20,10 @@ export const ScoreCardWrapper = styled.div`
 export const ScoreCardH3 = styled.h3`
   margin: 0px;
   padding: 0px;
+  text-transform: uppercase;
 `;
-export const ScoreCardH2 = styled.h2`
+
+export const ScoreCardH2 = styled( MediumHeading )`
   margin: 5px 0px 0px 0px;
   padding: 0px;
 `;
