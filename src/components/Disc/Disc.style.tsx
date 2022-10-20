@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 interface IDiscWrapper {
-    player: number,
     size: string;
+    color: string;
 }
 
 interface  IDiscWinnerWrapper {
@@ -15,7 +15,7 @@ export const DiscStyle = styled.div<IDiscWrapper>`
   justify-content: center;
   width: ${(props) => props.size === 'L' ? '64' : '33.95'}px;
   height: ${(props) => props.size === 'L' ? '64' : '33.95'}px;
-  background: ${(props) => props.player === 1 ? '#FD6687' : '#FFCE67'};
+  background: ${(props) => props.color};
   border: 3px solid #000000;
   border-radius: 50%;
   box-shadow: 0 5px 0 #000000, inset 0 6px 0 0 rgba(0, 0, 0, 0.5);

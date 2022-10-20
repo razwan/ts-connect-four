@@ -1,10 +1,10 @@
 import React from 'react';
 import { GameStyle } from './GameStyle.style';
 
-const Game = () => {
+const Game: React.FC<any> = ( props ) => {
     return (
-        <GameStyle></GameStyle>
+        <GameStyle>{ props.children }</GameStyle>
     )
 }
-
+    
 export default Game;
