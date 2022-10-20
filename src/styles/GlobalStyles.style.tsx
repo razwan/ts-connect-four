@@ -1,12 +1,10 @@
 import { createGlobalStyle } from "styled-components";
-
 import { Normalize } from "./Normalize.style";
-import { ColorVariables } from "./ColorVariables.style";
+import { theme } from "./Theme.style";
 import { Typography } from "./Typography.style";
 
 export const GlobalStyles = createGlobalStyle`
   ${ Normalize }
-  ${ ColorVariables }
   ${ Typography }
 
   html, body, #root {
@@ -20,11 +18,11 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    background: var(--color-bg-light);
+    background: ${theme.colors.lightPurple};
   }
 
-.card-label {
-  margin: 0 5px 0 0;
-  font-weight: 600;
-}
+  h1, h2, h3, h4, h5 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 `
