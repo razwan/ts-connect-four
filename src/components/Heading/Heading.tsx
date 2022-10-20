@@ -1,5 +1,11 @@
 import React from 'react';
 import { LargeHeading, MediumHeading, SmallHeading, XSmallHeading } from './Heading.style';
+export {
+  LargeHeading,
+  MediumHeading,
+  SmallHeading,
+  XSmallHeading,
+} from "./Heading.style";
 
 export interface IHeading {
   size: 'L' | 'M' | 'S' | 'XS';
@@ -17,7 +23,7 @@ const Heading: React.FC<IHeading> = ({
   switch (size) {
     case 'L':
       return (
-        <LargeHeading color={color} className={` ${className}`}>
+        <LargeHeading color={color} className={`${className}`}>
           {children}
         </LargeHeading>
       );
@@ -35,7 +41,7 @@ const Heading: React.FC<IHeading> = ({
       );
     default:
       return (
-        <XSmallHeading color={color} className={` ${className}`}>
+        <XSmallHeading color={color} className={`${className}`}>
           {children}
         </XSmallHeading>
       );
