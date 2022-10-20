@@ -17,7 +17,7 @@ export interface IHeading {
 const Heading: React.FC<IHeading> = ({
   size,
   children,
-  color = '#000000',
+  color,
   className = ''
 }) => {
   switch (size) {
