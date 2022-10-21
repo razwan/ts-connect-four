@@ -12,3 +12,6 @@ export { default as PauseMenu } from "./PauseMenu";
 export { default as ScoreCard } from "./ScoreCard";
 export { default as ScoreCardEmoji } from "./ScoreCardEmoji";
 export { default as StartMenu } from "./StartMenu";
+export { default as Winner } from "./Winner";
+export { default as PlayAgain } from "./PlayAgain";
+ 

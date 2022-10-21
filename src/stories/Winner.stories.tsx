@@ -9,4 +9,6 @@ export default {
 const Template: Story = (args: any) => <Winner {...args} />;
 
 export const WinnerStory = Template.bind({});
-WinnerStory.args = {};
+WinnerStory.args = {
+  player: "PLAYER 1"
+};

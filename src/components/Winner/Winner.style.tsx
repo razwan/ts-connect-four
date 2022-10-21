@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { theme } from "../../styles/Theme.style";
+import { LargeHeading } from "../Heading/Heading.style";
 
 export const WinnerWrapper = styled.div`
   display: flex;
@@ -13,23 +14,6 @@ export const WinnerWrapper = styled.div`
   box-shadow: 0px 10px 0px ${theme.colors.black};
 `;
 
-export const WinnerH1 = styled.h1`
+export const WinnerH1 = styled(LargeHeading)`
 `;
 
-export const PlayAgainButton = styled.button`
-  cursor: pointer;
-  text-align: center;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 20px;
-  background-color: ${theme.colors.darkPurple};
-  padding: 8px 17px;
-
-  &:hover {
-    background-color: ${theme.colors.pink};
-  }
-`;
-
-export const PlayText = styled.h3`
-color: ${theme.colors.white};
-`;
