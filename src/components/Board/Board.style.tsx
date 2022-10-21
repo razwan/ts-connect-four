@@ -1,19 +1,35 @@
 import styled from 'styled-components';
 import { theme } from "../../styles/Theme.style";
 
-const LayerGeneralStyles = styled.div`
-  box-sizing: border-box;
+const GridStyles = styled.div`
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(7, 1fr);
+  padding-left: 10px;
+  padding-right: 10px;
+
+  @media (min-width: 480px) {
+    gap: 24px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+`;
+
+const GridWithRowsStyles = styled( GridStyles )`
   grid-template-rows: repeat(6, 1fr);
-  padding: 10px 10px 32px;
+`
+
+const LayerGeneralStyles = styled( GridWithRowsStyles )`
+  box-sizing: border-box;
+
+  padding-top: 10px;
+  padding-bottom: 32px;
   border: 3px solid ${theme.colors.black};
   border-radius: 30px;
 
-  @media (min-width: 768px) {
-    gap: 24px;
-    padding: 20px 20px 60px;
+  @media (min-width: 480px) {
+    padding-top: 20px;
+    padding-bottom: 60px;
   }
 `;
 
@@ -33,17 +49,8 @@ export const BlackLayer = styled(LayerGeneralStyles)`
   z-index: -1;
 `;
 
-export const BoardPlayerPointerContainer = styled.div`
-  display: grid;
-  gap: 10px;
-  padding: 0 10px;
+export const BoardPlayerPointerContainer = styled( GridStyles )`
   box-sizing: border-box;
-  grid-template-columns: repeat(7, 1fr);
-
-  @media (min-width: 768px) {
-    gap: 24px;
-    padding: 0 20px;
-  }
 `;
 
 export const BoardPlayerPointerImg = styled.img`
@@ -51,11 +58,10 @@ export const BoardPlayerPointerImg = styled.img`
   transform: translate(-50%, 50%) scale(0.5);
   left: 50%;
   top: -38px;
-  z-index: 4;
   
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
     top: -48px;
-    transform: translate(-50%,50%) scale(1);
+    transform: translate(-50%, 50%) scale(1);
   }
 `;
 
