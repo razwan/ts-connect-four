@@ -11,21 +11,21 @@ export interface IStartMenu {
   onRulesClick?: () => void;
 }
 
-const StartMenu: React.FC<IStartMenu> = ({
-  onStart,
-  onRulesClick,
-  className = ''
-}) => {
+const StartMenu: React.FC<IStartMenu> = ( props ) => {
+  const { className } = props;
+  const onRulesClick = props.onRulesClick ?? (() => {})
+  const onStart = props.onStart ?? (() => {})
+  
   return (
     <StartMenuWrapper className={`${className}`}>
       <div><Logo /></div>
-      <Button onClick={() => onStart} backgroundColor={theme.colors.yellow}>
+      <Button onClick={() => { onStart() } } backgroundColor={theme.colors.yellow}>
         <div className='start-button-content'>
           <Heading size='M'>Play vs player</Heading>
           <img src={playersImage} alt='player vs player' />
         </div>
       </Button>
-      <Button onClick={() => onRulesClick}>
+      <Button onClick={() => { onRulesClick() }}>
         <Heading size='M'>Game rules</Heading>
       </Button>
     </StartMenuWrapper>
