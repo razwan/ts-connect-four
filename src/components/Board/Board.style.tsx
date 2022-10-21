@@ -16,7 +16,7 @@ export const BoardPlayerPointerContainer = styled.div<IBoardPlayerPointerWrapper
 
   @media (min-width: 768px) {
     gap: 24px;
-    padding: 0 20px;
+    padding: 0;
     width: 632px;
   }
 `;
