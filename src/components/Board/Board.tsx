@@ -5,7 +5,6 @@ import {
     BoardHole,
     WhiteLayer,
     WhiteBoardHole,
-    BoardWrapper,
     BoardPlayerPointerImg,
     BoardPlayerPointerContainer
 } from "./Board.style";
@@ -36,7 +35,7 @@ const Board: React.FC<IBoard> = ({
     const playerPointer = player === "player1" ? Player1Pointer : Player2Pointer;
 
     return (
-        <BoardWrapper>
+        <>
             <BoardPlayerPointerContainer>
                 {playerTurnStartArray.map((value, i) => {
                     if(currentPointerIndex === i) {
@@ -54,24 +53,27 @@ const Board: React.FC<IBoard> = ({
                 })}
             </BoardPlayerPointerContainer>
 
-            <BlackLayer>
-                {boardArray.map((hole, index) => {
-                    return (
-                        <BoardHoleWrapper key={index}>
-                            <BoardHole></BoardHole>
-                        </BoardHoleWrapper>
-                )})}
-            </BlackLayer>
-            <WhiteLayer className="white-layer">
-                {boardArray.map((hole, index) => {
-                    return (
-                        <BoardHoleWrapper key={index}>
-                            <WhiteBoardHole></WhiteBoardHole>
-                        </BoardHoleWrapper>
-                )})}
-            </WhiteLayer>
+            <div style={{position: "relative"}}>
+                <BlackLayer>
+                    {boardArray.map((hole, index) => {
+                        return (
+                            <BoardHoleWrapper key={index}>
+                                <BoardHole></BoardHole>
+                            </BoardHoleWrapper>
+                        )})}
+                </BlackLayer>
+                <WhiteLayer className="white-layer">
+                    {boardArray.map((hole, index) => {
+                        return (
+                            <BoardHoleWrapper key={index}>
+                                <WhiteBoardHole></WhiteBoardHole>
+                            </BoardHoleWrapper>
+                        )})}
+                </WhiteLayer>
+            </div>
+
             <Disc color={ '#FFCE67' } size={ 'L' } />
-        </BoardWrapper>
+        </>
     );
 }
 

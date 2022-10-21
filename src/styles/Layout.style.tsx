@@ -1,5 +1,3 @@
-import styled from "styled-components";
-
 export const Layout =`
 .layout {
     --side-spacing: 20px;
@@ -36,6 +34,7 @@ export const Layout =`
     
     @media only screen and (min-width: 768px) {
         padding-bottom: 32px;
+        margin-bottom: 32px;
     }
 
     @media only screen and (min-width: 1140px) {
