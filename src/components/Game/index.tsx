@@ -1,4 +1,3 @@
-import React from 'react';
 import { GameStyle } from './GameStyle.style';
 
 const Game: React.FC<any> = ( props ) => {

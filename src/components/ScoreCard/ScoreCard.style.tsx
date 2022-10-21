@@ -1,25 +1,29 @@
 import styled from "styled-components";
+import { MediumHeading } from "../Heading/Heading.style";
+import { theme } from "../../styles/Theme.style";
 
 export const ScoreCardWrapper = styled.div`
-  background-color: #ffffff;
-  border: 3px solid black;
-  box-shadow: 0px 10px 0px #000000;
+  position: relative;
+
+  padding: 5px 40px;
+  border: 3px solid ${ theme.colors.black };
+  background-color: ${ theme.colors.white };
   border-radius: 20px;
+  box-shadow: 0px 10px 0px ${ theme.colors.black };
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 5px 40px;
-  position: relative;
-  margin: 2rem;
 `;
-
 
 export const ScoreCardH3 = styled.h3`
   margin: 0px;
   padding: 0px;
+  text-transform: uppercase;
 `;
-export const ScoreCardH2 = styled.h2`
+
+export const ScoreCardH2 = styled( MediumHeading )`
   margin: 5px 0px 0px 0px;
   padding: 0px;
 `;

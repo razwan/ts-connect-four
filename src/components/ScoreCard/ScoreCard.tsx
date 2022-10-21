@@ -20,12 +20,8 @@ const ScoreCard: React.FC<PScoreCard> = (props) => {
   return (
       <ScoreCardWrapper>
         <ScoreCardEmoji position={position} />
-        <ScoreCardH3>
-          <Heading size="S">{player}</Heading>
-        </ScoreCardH3>
-        <ScoreCardH2>
-          <Heading size="M">{score}</Heading>
-        </ScoreCardH2>
+        <ScoreCardH3 as="div">{ player }</ScoreCardH3>
+        <ScoreCardH2 as="div">{ score }</ScoreCardH2>
       </ScoreCardWrapper>
   );
 };
