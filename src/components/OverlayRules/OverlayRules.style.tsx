@@ -1,26 +1,65 @@
 import styled from "styled-components";
 import { theme } from "../../styles/Theme.style";
+import { MediumHeading, SmallHeading } from "../Heading/Heading.style";
+
+export const OverlayRulesCheckWrapper = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 export const RulesWrapper = styled.div`
-  background-color: ${theme.colors.white};
-  margin: 6rem 2rem;
-  display: flex;
-  flex-direction: column;
-  postion: relative;
+  --side-margin: 1rem;
+  --side-padding: 20px;
+
+  position: relative;
+  
+  margin: 6rem var(--side-margin);
+  padding: 2rem var(--side-padding) 4rem;
   border: 3px solid ${theme.colors.black};
+
   box-shadow: 0px 10px 0px #000000;
+  background-color: ${theme.colors.white};
   border-radius: 20px;
-  padding: 2rem 1rem;
+
+  @media only screen and (min-width: 400px) {
+    --side-padding: 34px;
+    --side-margin: 2rem;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: list-number;
+
+    li {
+      display: flex;
+      counter-increment: list-number;
+
+      &:before {
+        content: counter( list-number );
+        font-weight: 700;
+        margin-right: 20px;
+      }
+    }
+
+    li + li {
+      margin-top: 10px;
+    }
+  }
 `;
 
-export const RulesHeadingH2 = styled.h2`
+export const RulesHeadingH2 = styled(MediumHeading)`
   display:flex;
   justify-content: center;
-  margin: 1rem 0 2rem 0;
+  margin-bottom: 2rem;
 `;
 
-export const RulesHeadingH3 = styled.h3`
+export const RulesHeadingH3 = styled(SmallHeading)`
   margin-top: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const RulesList = styled.ol`

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Check} from "./OverlayRulesCheck.style";
+import { Check } from "./OverlayRulesCheck.style";
 import checkH from "./assets/icon-check-hover.svg";
 import check from "./assets/icon-check.svg";
 
