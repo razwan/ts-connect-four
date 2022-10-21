@@ -1,13 +1,12 @@
 import styled from 'styled-components';
 import { useContext } from 'react';
-import { ConnectFour, OverlayRules, StartMenu } from '../../components';
+import { OverlayRules, StartMenu } from '../../components';
 import AppContext from '../../AppContext';
 
 const HomeScreenView: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
-    const { showRules, setShowRules, setCurrentGame } = context;
+    const { showRules, setShowRules, newGameVSPlayer } = context;
     
-
     if ( showRules ) {
         return <OverlayRules onClose={ () => { setShowRules( false ) } } />
     }
@@ -16,7 +15,7 @@ const HomeScreenView: React.FC<React.PropsWithChildren> = ( props ) => {
         <StartMenu 
             onRulesClick={ () => { setShowRules( true ) } } 
             onStart={ () => {
-                setCurrentGame( new ConnectFour( 'player1', 'player2' ) )
+                newGameVSPlayer()
             } } />
     )
 }
