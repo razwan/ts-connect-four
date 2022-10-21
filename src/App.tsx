@@ -1,6 +1,5 @@
-import { ThemeProvider } from 'styled-components';
 import React, { useContext } from 'react';
-
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from './styles/GlobalStyles.style';
 import { theme } from './styles/Theme.style';
 
@@ -19,7 +18,6 @@ const CurrentScreen: React.FC<React.PropsWithChildren> = ( props ) => {
 }
 
 const App = withContextProvider(() => {
-  
 
   return (
     <ThemeProvider theme={ theme }>

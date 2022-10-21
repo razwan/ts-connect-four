@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
 import AppContext from '../../AppContext'; 
-import { Header, Game, Footer, PauseMenu, ScoreCard, Disc } from '../../components';
+import { Board, Footer, Header, PauseMenu, ScoreCard } from '../../components';
 import { theme } from '../../styles/Theme.style';
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
@@ -18,9 +18,7 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
           <ScoreCard position={ 'left' } player={ 'player 1' } score={ 10 } />
         </div>
         <div className='layout__game'>
-          <Game>
-            <Disc color={ '#FFCE67' } size={ 'L' } />
-          </Game>
+          <Board player={ 'player2' } currentPointerIndex={0}></Board>
         </div>
         <div className='layout__scorecard layout__scorecard-2'>
           <ScoreCard position={ 'right' } player={ 'player 2' } score={ 1 } />
@@ -44,6 +42,7 @@ display: grid;
 
 const PauseMenuLayerStyle = styled( Layer )`
 position: fixed;
+z-index: 10;
 tranform: translateZ(0);
 display: flex;
 justify-content: center;
@@ -58,7 +57,7 @@ justify-content: center;
 &:before {
   content: "";
   position: absolute;
-  background: ${ theme.colors.darkPurple };
+  background: ${ theme.colors.black };
   opacity: 0.5;
   z-index: -1;
 }

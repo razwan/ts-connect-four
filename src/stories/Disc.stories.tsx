@@ -12,11 +12,9 @@ const Template: Story<IDisc> = (args: any) => <Disc {...args} />;
 export const DiscPlayer1 = Template.bind({});
 DiscPlayer1.args = {
     winner: false,
-    size: 'S',
 };
 
 export const DiscPlayer2 = Template.bind({});
 DiscPlayer2.args = {
     winner: true,
-    size: 'L',
 };
