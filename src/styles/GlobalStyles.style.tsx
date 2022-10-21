@@ -13,8 +13,14 @@ export const GlobalStyles = createGlobalStyle`
 
   #root {
     display: grid;
-    grid-template-columns: minmax(68px, 1fr) minmax(auto, 1040px) minmax(68px, 1fr);
+    grid-template-columns: minmax(20px, 1fr) minmax(auto, 1040px) minmax(20px, 1fr);
     grid-template-rows: auto 1fr 100px 50px;
+  }
+  
+  @media(min-width: 768px) {
+    #root {
+      grid-template-columns: minmax(68px, 1fr) minmax(auto, 1040px) minmax(68px, 1fr);
+    }
   }
 
   body {
