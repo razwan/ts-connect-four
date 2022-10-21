@@ -1,13 +1,17 @@
-import React from 'react';
+import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Header, Game, Footer, ScoreCard, Disc } from './components';
+import { Header, Game, Footer, ScoreCard, Disc, StartMenu, OverlayRules } from './components';
 import { GlobalStyles } from './styles/GlobalStyles.style';
 import { theme } from './styles/Theme.style';
 
 const App = () => {
+  const [ showRules, setShowRules ] = useState( false );
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <StartMenu onRulesClick={ () => { setShowRules( true ) } } />
+      { showRules && <OverlayRules onClose={ () => { setShowRules( false ) } } /> }
       <div className='layout'>
         <div className='layout__header'>
           <Header />

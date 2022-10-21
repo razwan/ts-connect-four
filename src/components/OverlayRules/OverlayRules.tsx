@@ -11,7 +11,13 @@ import {
 import { theme } from "../../styles/Theme.style";
 import OverlayRulesCheck from "../OverlayRulesCheck/OverlayRulesCheck";
 
-const OverlayRules = () => {
+type POverlayRules = {
+  children?: React.ReactNode,
+  onClose?: Function
+}
+
+const OverlayRules: React.FC<POverlayRules> = ( props ) => {
+  const onClose = props.onClose ?? (() => {});
   return (
     <RulesWrapper>
       <RulesHeadingH2>RULES</RulesHeadingH2>
@@ -31,7 +37,7 @@ const OverlayRules = () => {
         <li><p>The starter of the previous game goes second on the next game.</p></li>
       </ol>
       <OverlayRulesCheckWrapper>
-        <OverlayRulesCheck />
+        <OverlayRulesCheck clickHandler={ () => { onClose() } } />
       </OverlayRulesCheckWrapper>
     </RulesWrapper>
   );
