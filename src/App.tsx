@@ -1,38 +1,32 @@
-import { useState } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Header, Game, Footer, ScoreCard, Disc, StartMenu, OverlayRules } from './components';
+import React, { useContext } from 'react';
+
 import { GlobalStyles } from './styles/GlobalStyles.style';
 import { theme } from './styles/Theme.style';
 
-const App = () => {
-  const [ showRules, setShowRules ] = useState( false );
+import AppContext,{ withContextProvider } from './AppContext';
+import { GameScreen, HomeScreen } from './components';
+
+const CurrentScreen: React.FC<React.PropsWithChildren> = ( props ) => {
+  const context = useContext( AppContext );
+  const { currentGame } = context;
+
+  if ( ! currentGame ) {
+    return <HomeScreen />
+  }
+
+  return <GameScreen />
+}
+
+const App = withContextProvider(() => {
+  
 
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={ theme }>
       <GlobalStyles />
-      <StartMenu onRulesClick={ () => { setShowRules( true ) } } />
-      { showRules && <OverlayRules onClose={ () => { setShowRules( false ) } } /> }
-      <div className='layout'>
-        <div className='layout__header'>
-          <Header />
-        </div>
-        <div className='layout__scorecard layout__scorecard-1'>
-          <ScoreCard position={ 'left' } player={ 'player 1' } score={ 10 } />
-        </div>
-        <div className='layout__game'>
-          <Game>
-            <Disc color={ '#FFCE67' } size={ 'L' } />
-          </Game>
-        </div>
-        <div className='layout__scorecard layout__scorecard-2'>
-          <ScoreCard position={ 'right' } player={ 'player 2' } score={ 1 } />
-        </div>
-        <div className='layout__footer'>
-          <Footer />
-        </div>
-      </div>
+      <CurrentScreen />
     </ThemeProvider>
   );
-}
+} )
 
 export default App;

@@ -10,8 +10,6 @@ export const StartMenuWrapper = styled.div`
   text-transform: uppercase;
   text-align: center;
   height: fit-content;
-  margin-top: 20vh;
-  width: 40%;
   padding: 45px 40px;
 
   .start-button-content {
@@ -20,12 +18,15 @@ export const StartMenuWrapper = styled.div`
     align-items: center;
   }
 
-  img {
-    margin-bottom: 10px;
-  }
-
   button {
+    position: relative;
+    text-align: left;
     margin-top: 25px;
+
+    img {
+      position: absolute;
+      right: 20px;
+    }
   }
 
   // Medium devices (tablets, less than 992px)
