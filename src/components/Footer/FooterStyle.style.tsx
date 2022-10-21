@@ -5,6 +5,7 @@ position: relative;
 grid-row: 5;
 grid-column: 1 / -1;
 height: 100%;
+z-index: -2;
 
 &:before {
     content: "";

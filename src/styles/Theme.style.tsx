@@ -5,6 +5,7 @@ export const theme = {
     darkPurple: '#5C2DD5',
     lightPurple: '#7945FF',
     pink: '#FD6687',
-    yellow: '#FFCE67'
+    yellow: '#FFCE67',
+    transparent: '#00000000'
   }
 };
