@@ -21,4 +21,8 @@ export const GlobalStyles = createGlobalStyle`
     margin-top: 0;
     margin-bottom: 0;
   }
+
+  .blendMode {
+    mix-blend-mode: hard-light;
+  }
 `

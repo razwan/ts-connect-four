@@ -6,11 +6,13 @@ import {
     WhiteLayer,
     WhiteBoardHole,
     BoardPlayerPointerImg,
-    BoardPlayerPointerContainer
+    BoardPlayerPointerContainer,
+    Cell, LayerEmptyStyles
 } from "./Board.style";
 import { Disc } from "../index";
 import Player1Pointer  from "./assets/board-pointer-player-one.svg";
 import Player2Pointer from "./assets/board-pointer-player-two.svg";
+import {theme} from "../../styles/Theme.style";
 
 export interface IBoard {
     player: 'player1' | 'player2',
@@ -21,9 +23,9 @@ const boardArray = [
     0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0,
+    2, 0, 0, 0, 0, 0, 0,
+    1, 1, 0, 0, 0, 0, 0,
+    1, 2, 2, 1, 0, 0, 0,
 ];
 
 const playerTurnStartArray = [1,2,3,4,5,6,7];
@@ -62,17 +64,25 @@ const Board: React.FC<IBoard> = ({
                             </BoardHoleWrapper>
                         )})}
                 </BlackLayer>
+                <LayerEmptyStyles>
+                    {boardArray.map((hole, _) => {
+                        if(hole === 0) {
+                            return <Cell/>;
+                        }
+
+                        return <Disc color={ hole === 1 ? theme.colors.pink : theme.colors.yellow} />;
+                    })}
+                </LayerEmptyStyles>
                 <WhiteLayer className="white-layer">
                     {boardArray.map((hole, index) => {
                         return (
                             <BoardHoleWrapper key={index}>
                                 <WhiteBoardHole></WhiteBoardHole>
                             </BoardHoleWrapper>
-                        )})}
+                        );
+                    })}
                 </WhiteLayer>
             </div>
-
-            <Disc color={ '#FFCE67' } size={ 'L' } />
         </>
     );
 }

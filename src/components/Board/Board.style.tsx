@@ -19,9 +19,8 @@ const GridWithRowsStyles = styled( GridStyles )`
   grid-template-rows: repeat(6, 1fr);
 `
 
-const LayerGeneralStyles = styled( GridWithRowsStyles )`
+export const LayerGeneralStyles = styled( GridWithRowsStyles )`
   box-sizing: border-box;
-
   padding-top: 10px;
   padding-bottom: 32px;
   border: 3px solid ${theme.colors.black};
@@ -31,6 +30,14 @@ const LayerGeneralStyles = styled( GridWithRowsStyles )`
     padding-top: 20px;
     padding-bottom: 60px;
   }
+`;
+
+export const LayerEmptyStyles = styled( LayerGeneralStyles )`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: -3px;
+  border-color: transparent;
 `;
 
 export const WhiteLayer =styled(LayerGeneralStyles)`
@@ -63,6 +70,10 @@ export const BoardPlayerPointerImg = styled.img`
     top: -48px;
     transform: translate(-50%, 50%) scale(1);
   }
+`;
+
+export const Cell = styled.div`
+  aspect-ratio: 1;
 `;
 
 export const BoardHoleWrapper = styled.div`
