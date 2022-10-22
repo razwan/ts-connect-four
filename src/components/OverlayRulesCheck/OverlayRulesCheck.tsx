@@ -6,18 +6,22 @@ import check from "./assets/icon-check.svg";
 
 import { useState } from 'react';
 
-const OverlayRulesCheck = () => {
+type POverlayRulesCheck = {
+  children?: React.ReactNode,
+  clickHandler?: Function
+}
+
+const OverlayRulesCheck: React.FC<POverlayRulesCheck> = ( props ) => {
+    const clickHandler = props.clickHandler ?? (() => {});
     const [hover, setHover] = useState(false);
+    const src = hover === true ? checkH : check;
     return (
       <Check
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
+        onClick={ () => { clickHandler() } }
       >
-        {hover === true ? (
-          <img src={checkH} alt="checkhover" />
-        ) : (
-          <img src={check} alt="check" />
-        )}
+        <img src={ src } alt="check" />
       </Check>
     );
 }
