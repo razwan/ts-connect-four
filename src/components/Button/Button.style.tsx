@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-
 export interface IButtonWrapper {
   backgroundColor: string;
   alignment?: 'left' | 'center' | 'right';

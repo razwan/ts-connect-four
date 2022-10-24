@@ -9,7 +9,6 @@ export { default as Modal } from "./Modal";
 export { default as OverlayRules } from "./OverlayRules";
 export { default as OverlayRulesCheck } from "./OverlayRulesCheck";
 export { default as PauseMenu } from "./PauseMenu";
-export { default as PlayAgain } from "./PlayAgain";
 export { default as ScoreCard } from "./ScoreCard";
 export { default as ScoreCardEmoji } from "./ScoreCardEmoji";
 export { default as StartMenu } from "./StartMenu";

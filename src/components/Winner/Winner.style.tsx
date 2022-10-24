@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { theme } from "../../styles/Theme.style";
 
 export const WinnerWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
   padding: 5px 40px;
   border: 3px solid ${theme.colors.black};
   background-color: ${theme.colors.white};
@@ -14,6 +11,11 @@ export const WinnerWrapper = styled.div`
 `;
 
 export const WinnerH1 = styled.h1`
+  text-transform: uppercase;
+`;
+
+export const WinnerH3 = styled.h3`
+ text-transform:uppercase;
 `;
 
 export const PlayAgainButton = styled.button`

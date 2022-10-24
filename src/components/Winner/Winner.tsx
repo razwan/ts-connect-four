@@ -1,7 +1,8 @@
 import React from "react";
-import PlayAgain from "../PlayAgain";
-import { ScoreCardH3 } from "../ScoreCard/ScoreCard.style";
-import { WinnerWrapper, WinnerH1 } from "./Winner.style";
+import { WinnerWrapper, WinnerH1, WinnerH3 } from "./Winner.style";
+import { theme } from "../../styles/Theme.style";
+import Heading from "../Heading";
+import Button from "../Button";
 
 export interface IWinner {
   player: string;
@@ -12,9 +13,13 @@ const Winner: React.FC<IWinner> = (props) => {
 
   return (
     <WinnerWrapper>
-      <ScoreCardH3>{player}</ScoreCardH3>
+      <WinnerH3>{player}</WinnerH3>
       <WinnerH1>WINS</WinnerH1>
-      <PlayAgain/>
+      <Button variant="plain" onClick={() => {}}>
+        <Heading size="XS" color={theme.colors.white}>
+          PLAY AGAIN
+        </Heading>
+      </Button>
     </WinnerWrapper>
   );
 };
