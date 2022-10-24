@@ -22,7 +22,7 @@ const columns = css`
 `;
 
 const rows = css`
-  grid-template-rows: repeat(6, auto);
+  grid-template-rows: repeat(6, 1fr);
 `;
 
 const verticalPadding = css`
@@ -35,7 +35,7 @@ padding-bottom: 32px;
 }
 `;
 
-export const Column = styled.div`
+export const ColumnStyle = styled.div`
   display: grid;
   ${ rows }
   ${ gap }
@@ -67,7 +67,7 @@ border: 3px solid ${theme.colors.black};
 border-color: transparent;
 `;
 
-export const WhiteLayer =styled(LayerGeneralStyles)`
+export const WhiteLayerStyle = styled(LayerGeneralStyles)`
 position: absolute;
 top: 0;
 left: 0;
@@ -80,7 +80,7 @@ background: ${theme.colors.white};
 pointer-events: none;
 `;
 
-export const BlackLayer = styled(LayerGeneralStyles)`
+export const BlackLayerStyle = styled(LayerGeneralStyles)`
   background: ${theme.colors.black};
   box-shadow: 0 10px 0 ${theme.colors.black};
   z-index: -1;
@@ -98,10 +98,6 @@ export const BoardPlayerPointerImg = styled.img`
   @media no screen and (min-width: 480px) {
     scale(0.5);
   }
-`;
-
-export const Cell = styled.div`
-  aspect-ratio: 1;
 `;
 
 export const BoardHoleWrapper = styled.div`
