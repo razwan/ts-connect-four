@@ -30,15 +30,15 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
     )
 }
 
+const Layers = styled.div`
+display: grid;
+`
+
 const Layer = styled.div`
 position: relative;
 grid-column: 1;
 grid-row: 1;
 `;
-
-const Layers = styled.div`
-display: grid;
-`
 
 const PauseMenuLayerStyle = styled( Layer )`
 position: fixed;

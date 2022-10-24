@@ -22,6 +22,7 @@ export const StartMenuWrapper = styled.div`
     position: relative;
     text-align: left;
     margin-top: 25px;
+    padding-right: 122px;
 
     img {
       position: absolute;
@@ -31,26 +32,18 @@ export const StartMenuWrapper = styled.div`
 
   // Medium devices (tablets, less than 992px)
   @media (max-width: 991.98px) {
-    width: 50%;
     
     h2 {
       font-size: 2rem;
     }
   }
 
-  // Small devices (landscape phones, less than 768px)
-    @media (max-width: 767.98px) {
-      width: 70%;
-    }
-
   // X-Small devices (portrait phones, less than 576px)
   @media (max-width: 575.98px) {
-    width: 100%;
-    height: 100%;
     border: none;
     box-shadow: none;
     margin-top: 0;
-    padding-top: 20vh;
+    padding: 0;
 
     h2 {
       font-size: 1.5rem;
