@@ -81,3 +81,23 @@ test( 'cannot insert in a full column', () => {
     // assert
     expect( () => { game1.insert( 1 ) } ).toThrow();
 } )
+
+test( 'cpu throws error if board is already full', () => {
+    // arrange
+    const game1 = new ConnectFour( 'bianca', 'sabina' );
+    const moves = [
+        ...Array(6).fill(0),
+        ...Array(6).fill(1),
+        ...Array(6).fill(2),
+        ...Array(6).fill(3),
+        ...Array(6).fill(4),
+        ...Array(6).fill(5),
+        ...Array(6).fill(6)
+    ];
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( () => { game1.getCPUInsertIndex() } ).toThrow();
+} )

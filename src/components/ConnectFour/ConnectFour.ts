@@ -87,6 +87,10 @@ class ConnectAny<T> {
             }
         });
 
+        if(validIndexes.length === 0) {
+            throw new Error( 'Board is already full' );
+        }
+
         return validIndexes[Math.floor(Math.random() * validIndexes.length)];
     }
 
