@@ -70,7 +70,7 @@ const Board: React.FC<IBoard> = ({
                             return <Cell/>;
                         }
 
-                        return <Disc color={ hole === 1 ? '#FD6687' : '#FFCE67' } />;
+                        return <Disc color={ hole === 1 ? theme.colors.pink : theme.colors.yellow} />;
                     })}
                 </LayerEmptyStyles>
                 <WhiteLayer className="white-layer">
