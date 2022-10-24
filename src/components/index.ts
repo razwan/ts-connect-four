@@ -1,3 +1,4 @@
+export { default as Board } from "./Board";
 export { default as Button } from "./Button"; 
 export { default as Disc } from "./Disc"; 
 export { default as Header } from "./Header";
@@ -11,4 +12,4 @@ export { default as PauseMenu } from "./PauseMenu";
 export { default as ScoreCard } from "./ScoreCard";
 export { default as ScoreCardEmoji } from "./ScoreCardEmoji";
 export { default as StartMenu } from "./StartMenu";
-export { default as Board } from "./Board";
+export { default as Winner } from "./Winner";
