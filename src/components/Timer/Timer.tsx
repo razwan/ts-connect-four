@@ -1,6 +1,8 @@
 import React from "react";
 import { TimerWrapper, TimerH3, TimerH1, TimerRectangle } from "./Timer.style";
-import rectangle from "./assets/Rectangle.svg";
+import rectangle1 from "./assets/Rectangle.svg";
+import rectangle2 from "./assets/Rectangle2.svg";
+
 import { useState, useEffect } from "react";
 
 export interface ITimer {
@@ -24,7 +26,7 @@ const Timer: React.FC<ITimer> = (props) => {
 
   return (
     <TimerWrapper>
-      <TimerRectangle src={rectangle}/>
+      <TimerRectangle src={player === "PLAYER 1" ? rectangle1 : rectangle2}/>
       <TimerH3>{player}'S TURN</TimerH3>
       <TimerH1>{timeLeft}s</TimerH1>
     </TimerWrapper>
