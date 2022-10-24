@@ -16,7 +16,7 @@ const Timer: React.FC<ITimer> = (props) => {
 
   useEffect(() => {
 
-    if (timeLeft === 0){ return }
+    if (timeLeft === 0){ return (()=>{})}
     const interval = setInterval(() => {
       setTimeLeft(timeLeft => timeLeft - 1);
     }, 1000);
