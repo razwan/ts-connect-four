@@ -7,9 +7,6 @@ export const TimerWrapper = styled.div`
   position: relative;
 `;
 
-export const TimerRectangle = styled.img`
-`;
-
 export const TimerH1 = styled(LargeHeading)`
   text-transform: uppercase;
   color: ${theme.colors.white};
