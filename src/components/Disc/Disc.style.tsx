@@ -5,10 +5,7 @@ interface IDiscWrapper {
 }
 
 export const DiscStyle = styled.div<IDiscWrapper>`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  aspect-ratio: 1;
   background: ${(props) => props.color};
   border: 3px solid #000000;
   border-radius: 50%;

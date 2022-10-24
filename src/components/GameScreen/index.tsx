@@ -18,7 +18,7 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
         <ScoreCard position={ 'left' } player={ 'player 1' } score={ 10 } />
       </div>
       <div className='layout__game'>
-        <Board player={ 'player2' } currentPointerIndex={0}></Board>
+        <Board />
       </div>
       <div className='layout__scorecard layout__scorecard-2'>
         <ScoreCard position={ 'right' } player={ 'player 2' } score={ 1 } />

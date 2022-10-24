@@ -9,7 +9,7 @@ test( 'game can be won on column', () => {
     moves.forEach( move => game1.insert( move ) );
 
     // assert
-    expect( game1.getWinner() ).toBe( 'razvan' );
+    expect( game1.winner ).toBe( 'razvan' );
 } )
 
 test( 'game can be won a row', () => {
@@ -21,7 +21,7 @@ test( 'game can be won a row', () => {
     moves.forEach( move => game1.insert( move ) );
 
     // assert
-    expect( game1.getWinner() ).toBe( 'madalina' );
+    expect( game1.winner ).toBe( 'madalina' );
 } )
 
 test( 'game can be won on a diagonal', () => {
@@ -33,7 +33,7 @@ test( 'game can be won on a diagonal', () => {
     moves.forEach( move => game1.insert( move ) );
 
     // assert
-    expect( game1.getWinner() ).toBe( 'razvan' );
+    expect( game1.winner ).toBe( 'razvan' );
 } )
 
 test( 'game can be won on the other diagonal', () => {
@@ -45,7 +45,7 @@ test( 'game can be won on the other diagonal', () => {
     moves.forEach( move => game1.insert( move ) );
 
     // assert
-    expect( game1.getWinner() ).toBe( 'razvan' );
+    expect( game1.winner ).toBe( 'razvan' );
 } )
 
 test( 'cannot continue after game ended', () => {
@@ -80,4 +80,11 @@ test( 'cannot insert in a full column', () => {
 
     // assert
     expect( () => { game1.insert( 1 ) } ).toThrow();
+} )
+
+test( 'board is empty at beginning of the game', () => {
+    const game1 = new ConnectFour( 'razvan', 'madalina' );
+    const emptyColumn = Array(6).fill(undefined).map( () => undefined );
+    const emptyBoard = Array(7).fill(undefined).map( () => emptyColumn ); 
+    expect( game1.board ).toEqual( emptyBoard );
 } )

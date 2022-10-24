@@ -1,53 +1,83 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { theme } from "../../styles/Theme.style";
 
 const GridStyles = styled.div`
-  display: grid;
+display: grid;
+padding-left: 10px;
+padding-right: 10px;
+
+@media (min-width: 480px) {
+  gap: 24px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+`;
+
+const gap = css`
   gap: 10px;
+`;
+
+const columns = css`
   grid-template-columns: repeat(7, 1fr);
-  padding-left: 10px;
-  padding-right: 10px;
-
-  @media (min-width: 480px) {
-    gap: 24px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 `;
 
-const GridWithRowsStyles = styled( GridStyles )`
-  grid-template-rows: repeat(6, 1fr);
-`
-
-export const LayerGeneralStyles = styled( GridWithRowsStyles )`
-  box-sizing: border-box;
-  padding-top: 10px;
-  padding-bottom: 32px;
-  border: 3px solid ${theme.colors.black};
-  border-radius: 30px;
-
-  @media (min-width: 480px) {
-    padding-top: 20px;
-    padding-bottom: 60px;
-  }
+const rows = css`
+  grid-template-rows: repeat(6, auto);
 `;
 
-export const LayerEmptyStyles = styled( LayerGeneralStyles )`
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  border-color: transparent;
+const verticalPadding = css`
+padding-top: 10px;
+padding-bottom: 32px;
+
+@media (min-width: 480px) {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+`;
+
+export const Column = styled.div`
+  display: grid;
+  ${ rows }
+  ${ gap }
+`;
+
+export const LayerGeneralStyles = styled( GridStyles )`
+${ gap }
+${ rows }
+${ columns }
+${ verticalPadding }
+box-sizing: border-box;
+border: 3px solid ${theme.colors.black}; 
+border-radius: 30px;
+`;
+
+export const LayerEmptyStyles = styled( GridStyles )`
+${ gap }
+${ columns }
+${ verticalPadding }
+position: absolute;
+left: 0;
+top: 0;
+
+width: 100%;
+height: 100%;
+padding-bottom: 32px;
+border: 3px solid ${theme.colors.black};
+
+border-color: transparent;
 `;
 
 export const WhiteLayer =styled(LayerGeneralStyles)`
-  mix-blend-mode: hard-light;
-  background: ${theme.colors.white};
-  z-index: 3;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+z-index: 3;
+
+width: 100%;
+
+mix-blend-mode: hard-light;
+background: ${theme.colors.white};
+pointer-events: none;
 `;
 
 export const BlackLayer = styled(LayerGeneralStyles)`
@@ -57,18 +87,16 @@ export const BlackLayer = styled(LayerGeneralStyles)`
 `;
 
 export const BoardPlayerPointerContainer = styled( GridStyles )`
-  box-sizing: border-box;
+  display: grid;
+  ${ gap }
+  ${ columns }
 `;
 
 export const BoardPlayerPointerImg = styled.img`
-  position: absolute;
-  transform: translate(-50%, 50%) scale(0.5);
-  left: 50%;
-  top: -38px;
-  
-  @media (min-width: 480px) {
-    top: -48px;
-    transform: translate(-50%, 50%) scale(1);
+  justify-self: center;
+
+  @media no screen and (min-width: 480px) {
+    scale(0.5);
   }
 `;
 
