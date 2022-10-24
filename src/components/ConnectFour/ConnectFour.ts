@@ -79,6 +79,17 @@ class ConnectAny<T> {
         return directions.some( this.hasEnoughConnected )
     }
 
+    public getCPUInsertIndex(): number {
+        const validIndexes: number[] = [];
+        this.board.forEach( (column, index) => {
+            if (column.length < this._rowsNo) {
+                validIndexes.push(index);
+            }
+        });
+
+        return validIndexes[Math.floor(Math.random() * validIndexes.length)];
+    }
+
     getWinner() {
         return this.winner;
     }
