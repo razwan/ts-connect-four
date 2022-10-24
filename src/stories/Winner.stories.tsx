@@ -1,6 +1,5 @@
 import { Winner } from "../components";
 import { Story } from "@storybook/react";
-import { IButton } from "../components/Button/Button";
 import { ThemeProvider } from "styled-components";
 import { theme } from "../styles/Theme.style";
 
