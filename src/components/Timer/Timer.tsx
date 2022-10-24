@@ -11,7 +11,7 @@ export interface ITimer {
 }
 
 const Timer: React.FC<ITimer> = (props) => {
-  const { player, time } = props;
+  const { player } = props;
 
   const [timeLeft, setTimeLeft] = useState(30);
 
