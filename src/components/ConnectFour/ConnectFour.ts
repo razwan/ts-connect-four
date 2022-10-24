@@ -2,19 +2,29 @@ type Column<T> = Array<T>
 type Board<T> = Array<Column<T>>
 
 class ConnectAny<T> {
-    private board: Board<T>;
-    private currentPlayer: T;
-    private winner: T | undefined;
+    private _board: Board<T>;
+    private _currentPlayer: T;
+    private _winner: T | undefined;
 
     constructor( 
-        private player1: T, 
-        private player2: T, 
-        private connectNo: number, 
-        private columnsNo: number, 
-        private rowsNo: number 
+        private _player1: T, 
+        private _player2: T, 
+        private _connectNo: number, 
+        private _columnsNo: number, 
+        private _rowsNo: number 
     ) {
-        this.board = Array(this.columnsNo).fill(undefined).map( () => [] );
-        this.currentPlayer = this.player1;
+        this._board = Array(this._columnsNo).fill(undefined).map( () => [] );
+        this._currentPlayer = this._player1;
+    }
+
+    // returns board configuration in a classic matrix
+    public get board() {
+        return this._board.map( column => {
+            const filled = Array( this._rowsNo );
+            filled.splice( 0, column.length, ...column.slice() )
+            filled.fill( undefined as T, column.length, this._rowsNo + 1 );
+            return filled.reverse();
+        } );
     }
 
     private static allArrayElementsAreEqual = ( array: Array<any> ) =>  {
@@ -25,18 +35,18 @@ class ConnectAny<T> {
     
     private hasEnoughConnected = ( array: Array<any> ) => {
         return array.some( ( element, index, arr ) => {
-            const slice = arr.slice(index, index + this.connectNo);
+            const slice = arr.slice(index, index + this._connectNo);
             return slice.length === 4 && ConnectAny.allArrayElementsAreEqual( slice );
         } )
     }
 
     isInsertLegal( columnIndex: number ) {
 
-        if ( columnIndex < 0 || columnIndex > this.columnsNo - 1 ) {
+        if ( columnIndex < 0 || columnIndex > this._columnsNo - 1 ) {
             return false;
         }
 
-        if ( this.board[ columnIndex ].length > this.rowsNo - 1 ) {
+        if ( this._board[ columnIndex ].length > this._rowsNo - 1 ) {
             return false;
         }
 
@@ -45,7 +55,7 @@ class ConnectAny<T> {
 
     insert( columnIndex: number ) {
 
-        if ( this.winner ) {
+        if ( this._winner ) {
             throw new Error( 'Game ended' );
         }
 
@@ -53,24 +63,24 @@ class ConnectAny<T> {
             throw new Error( 'Illegal insert' );
         }
 
-        this.board[ columnIndex ].push( this.currentPlayer );
+        this._board[ columnIndex ].push( this._currentPlayer );
         
         if ( this.isWinningMove( columnIndex ) ) {
-            this.winner = this.currentPlayer;
+            this._winner = this._currentPlayer;
             return;
         }
 
-        this.currentPlayer = this.currentPlayer === this.player1 ? this.player2 : this.player1;
+        this._currentPlayer = this._currentPlayer === this._player1 ? this._player2 : this._player1;
     }
 
     isWinningMove( columnIndex: number ) {
-        const column = this.board[ columnIndex ];
+        const column = this._board[ columnIndex ];
         const rowIndex = column.length - 1;
-        const row = this.board.map( column => column[ rowIndex ] );
-        const diag1 = this.board.map( ( eachColumn, eachColumnIndex ) => {
+        const row = this._board.map( column => column[ rowIndex ] );
+        const diag1 = this._board.map( ( eachColumn, eachColumnIndex ) => {
             return eachColumn[ rowIndex + ( eachColumnIndex - columnIndex ) ]
         } );
-        const diag2 = this.board.map( ( eachColumn, eachColumnIndex ) => {
+        const diag2 = this._board.map( ( eachColumn, eachColumnIndex ) => {
             return eachColumn[ rowIndex - ( eachColumnIndex - columnIndex ) ]
         } );
 
@@ -79,8 +89,20 @@ class ConnectAny<T> {
         return directions.some( this.hasEnoughConnected )
     }
 
-    getWinner() {
-        return this.winner;
+    public get winner() {
+        return this._winner;
+    }
+
+    public get player1() {
+        return this._player1;
+    }
+
+    public get player2() {
+        return this._player2;
+    }
+
+    public get currentPlayer() {
+        return this._currentPlayer;
     }
 }
 
