@@ -1,11 +1,9 @@
 import { useContext } from 'react';
-import styled from 'styled-components';
 import AppContext from '../../AppContext'; 
 import { Board, Footer, Header, Modal, PauseMenu, ScoreCard } from '../../components';
-import { theme } from '../../styles/Theme.style';
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
-  const { setShowPauseMenu, newGameVSPlayer } = useContext( AppContext );
+  const { setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
 
   return (
       <div className='layout'>
@@ -15,13 +13,13 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
           onRestartClick={ () => { newGameVSPlayer() } } />
       </div>
       <div className='layout__scorecard layout__scorecard-1'>
-        <ScoreCard position={ 'left' } player={ 'player 1' } score={ 10 } />
+        <ScoreCard position={ 'left' } player={ 'player 1' } score={ playerVsPlayerScore[0] } />
       </div>
       <div className='layout__game'>
         <Board />
       </div>
       <div className='layout__scorecard layout__scorecard-2'>
-        <ScoreCard position={ 'right' } player={ 'player 2' } score={ 1 } />
+        <ScoreCard position={ 'right' } player={ 'player 2' } score={ playerVsPlayerScore[1] } />
       </div>
       <div className='layout__footer'>
         <Footer />

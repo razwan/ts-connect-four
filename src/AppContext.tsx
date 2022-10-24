@@ -8,7 +8,9 @@ type TAppContext = {
     setShowPauseMenu: Function,
     currentGame?: ConnectFour<string>,
     setCurrentGame: Function,
-    newGameVSPlayer: Function
+    newGameVSPlayer: Function,
+    playerVsPlayerScore: [ number, number ],
+    playerVsCPUScore: [ number, number ]
 }
 
 type HOC = ( Component: any ) => React.FC<PropsWithChildren>
@@ -33,6 +35,8 @@ const withContextProvider: HOC = ( Component ) => {
             showPauseMenu,
             setShowPauseMenu,
             newGameVSPlayer,
+            playerVsPlayerScore: [ 0, 0 ],
+            playerVsCPUScore: [ 0, 0 ]
         };
 
         return (
