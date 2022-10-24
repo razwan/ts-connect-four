@@ -7,7 +7,6 @@ import { useState, useEffect } from "react";
 
 export interface ITimer {
   player: string;
-  time: number;
 }
 
 const Timer: React.FC<ITimer> = (props) => {
@@ -19,10 +18,10 @@ const Timer: React.FC<ITimer> = (props) => {
 
     if (timeLeft === 0){ return }
     const interval = setInterval(() => {
-      setTimeLeft(() => timeLeft - 1);
+      setTimeLeft(timeLeft => timeLeft - 1);
     }, 1000);
     return () => clearInterval(interval);
-  },[timeLeft]);
+  },[]);
 
   return (
     <TimerWrapper>
