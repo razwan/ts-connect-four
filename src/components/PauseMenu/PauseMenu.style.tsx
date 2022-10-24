@@ -10,7 +10,6 @@ export const PauseMenuWrapper = styled.div`
   text-transform: uppercase;
   text-align: center;
   height: fit-content;
-  margin-top: 20vh;
   padding: 45px 40px;
 
   button {
