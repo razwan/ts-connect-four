@@ -3,14 +3,15 @@ import { theme } from "../../styles/Theme.style";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import { StartMenuWrapper } from "./StartMenu.style";
-import playersImage from "./assets/player-vs-player.svg";
+import playerVsPlayerImg from "./assets/player-vs-player.svg";
+import playerVsCPUImg from "./assets/player-vs-cpu.svg";
 
 export interface IStartMenu {
   className?: string;
   onStart?: () => void;
   onRulesClick?: () => void;
 }
-
+ 
 const StartMenu: React.FC<IStartMenu> = ( props ) => {
   const { className } = props;
   const onRulesClick = props.onRulesClick ?? (() => {})
@@ -21,12 +22,18 @@ const StartMenu: React.FC<IStartMenu> = ( props ) => {
       <div><Logo /></div>
       <Button onClick={() => { onStart() } } backgroundColor={theme.colors.yellow}>
         <div className='start-button-content'>
-          <Heading size='M'>Play vs player</Heading>
-          <img src={playersImage} alt='player vs player' />
+          <Heading size='S'>Play vs player</Heading>
+          <img src={ playerVsPlayerImg } alt='player vs player' />
+        </div>
+      </Button>
+      <Button onClick={() => { onStart() } } backgroundColor={theme.colors.pink}>
+        <div className='start-button-content'>
+          <Heading size='S' color={theme.colors.white}>Play vs CPU</Heading>
+          <img src={ playerVsCPUImg } alt='player vs CPU' />
         </div>
       </Button>
       <Button onClick={() => { onRulesClick() }}>
-        <Heading size='M'>Game rules</Heading>
+        <Heading size='S'>Game rules</Heading>
       </Button>
     </StartMenuWrapper>
   );

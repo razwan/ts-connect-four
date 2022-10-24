@@ -4,7 +4,7 @@ import { DiscStyle, DiscWinner  } from './Disc.style';
 export interface IDisc {
     color: string;
     winner?: boolean;
-    className?: string;
+    className?: string; 
 }
 
 const Disc: React.FC<IDisc> = ({

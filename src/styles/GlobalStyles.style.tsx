@@ -22,6 +22,10 @@ export const GlobalStyles = createGlobalStyle`
     margin-bottom: 0;
   }
 
+  *, *:before, *:after {
+    box-sizing: border-box;
+  }
+  
   .blendMode {
     mix-blend-mode: hard-light;
   }

@@ -11,7 +11,6 @@ export const PauseMenuWrapper = styled.div`
   text-align: center;
   height: fit-content;
   margin-top: 20vh;
-  width: 40%;
   padding: 45px 40px;
 
   button {
@@ -20,7 +19,6 @@ export const PauseMenuWrapper = styled.div`
 
   // Medium devices (tablets, less than 992px)
   @media (max-width: 991.98px) {
-    width: 50%;
 
     h2 {
       font-size: 2rem;
@@ -28,8 +26,7 @@ export const PauseMenuWrapper = styled.div`
   }
 
   // Small devices (landscape phones, less than 768px)
-  @media (max-width: 767.98px) {
-    width: 70%;
+  @media (max-width: 767.98px) { 
 
     h2 {
         font-size: 1.7rem;
@@ -38,7 +35,6 @@ export const PauseMenuWrapper = styled.div`
 
   // X-Small devices (portrait phones, less than 576px)
   @media (max-width: 575.98px) {
-    width: 80%;
 
     h2 {
       font-size: 1.5rem;

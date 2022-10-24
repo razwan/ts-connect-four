@@ -36,7 +36,7 @@ export const LayerEmptyStyles = styled( LayerGeneralStyles )`
   position: absolute;
   width: 100%;
   height: 100%;
-  top: -3px;
+  top: 0;
   border-color: transparent;
 `;
 

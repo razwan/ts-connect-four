@@ -12,7 +12,7 @@ export const EmphasizedButton = styled.button<IButtonWrapper>`
   border: 3px solid ${({ theme }) => theme.colors.black};
   box-shadow: 0px 10px 0px ${({ theme }) => theme.colors.black};
   border-radius: 20px;
-  padding: 1rem 1.25rem 1rem 1.25rem;
+  padding: 1.25rem;
 
   &:hover {
     border: 3px solid ${({ theme }) => theme.colors.darkPurple};

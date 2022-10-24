@@ -10,12 +10,10 @@ export const OverlayRulesCheckWrapper = styled.div`
 `;
 
 export const RulesWrapper = styled.div`
-  --side-margin: 1rem;
   --side-padding: 20px;
 
   position: relative;
   
-  margin: 6rem var(--side-margin);
   padding: 2rem var(--side-padding) 4rem;
   border: 3px solid ${theme.colors.black};
 
@@ -25,7 +23,6 @@ export const RulesWrapper = styled.div`
 
   @media only screen and (min-width: 400px) {
     --side-padding: 34px;
-    --side-margin: 2rem;
   }
 
   ol {
