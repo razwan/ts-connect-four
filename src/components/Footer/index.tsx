@@ -5,7 +5,7 @@ import AppContext from '../../AppContext';
 import Timer from '../Timer';
 
 const Footer = () => {
-    const { winner, currentGame, newGameVSPlayer } = useContext( AppContext );
+    const { ended, winner, currentGame, newGameVSPlayer } = useContext( AppContext );
     const winnerIsPlayer1 = winner === currentGame!.player1;
     const winnerString = winnerIsPlayer1 ? currentGame!.player1 : currentGame!.player2;
     const className = `${ winner ? `has-winner has-winner--${ winnerString }` : '' }`;
@@ -13,10 +13,10 @@ const Footer = () => {
     return (
         <FooterStyle className={ className }>
             <FooterContentStyle>
-                { winner && <Winner player={ winner } onPlayAgainClick={ () => { 
+                { ended && <Winner player={ winner } onPlayAgainClick={ () => { 
                     newGameVSPlayer( currentGame!.player2, currentGame!.player1 );
                 } } /> }
-                { ! winner && <Timer player='PLAYER 1'/> }
+                { ! ended && <Timer player={ currentGame!.currentPlayer } /> }
             </FooterContentStyle>
         </FooterStyle>
     )

@@ -5,6 +5,7 @@ class ConnectAny<T> {
     private _board: Board<T>;
     private _currentPlayer: T;
     private _winner: T | undefined;
+    private _gameEnded = false;
 
     constructor( 
         private _player1: T, 
@@ -103,6 +104,10 @@ class ConnectAny<T> {
 
     public get currentPlayer() {
         return this._currentPlayer;
+    }
+
+    public get ended() {
+        return this._winner || this._board.every( col => col.length === this._rowsNo );
     }
 }
 
