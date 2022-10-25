@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { FooterContentStyle, FooterStyle } from './FooterStyle.style';
 import { Winner } from '../../components';
 import AppContext from '../../AppContext';
+import Timer from '../Timer';
 
 const Footer = () => {
     const { winner, currentGame, newGameVSPlayer } = useContext( AppContext );
@@ -15,6 +16,7 @@ const Footer = () => {
                 { winner && <Winner player={ winner } onPlayAgainClick={ () => { 
                     newGameVSPlayer( currentGame!.player2, currentGame!.player1 );
                 } } /> }
+                <Timer player='PLAYER 1'/>
             </FooterContentStyle>
         </FooterStyle>
     )
