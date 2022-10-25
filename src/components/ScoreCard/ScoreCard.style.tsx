@@ -16,13 +16,16 @@ export const ScoreCardWrapper = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 768px){
+    width: 20%;
+  }
+
   @media (min-width: 768px) {
-    width: 296px;
-    height: 100px;
+    width: 30%;
   }
   @media (min-width: 1040px) {
-    width: 141px;
-    height: 160px;
+    width: 10%;
+    padding-top: 4%;
   } ;
 `;
 
