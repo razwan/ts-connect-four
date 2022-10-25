@@ -16,7 +16,7 @@ const Footer = () => {
                 { winner && <Winner player={ winner } onPlayAgainClick={ () => { 
                     newGameVSPlayer( currentGame!.player2, currentGame!.player1 );
                 } } /> }
-                <Timer player='PLAYER 1'/>
+                { ! winner && <Timer player='PLAYER 1'/> }
             </FooterContentStyle>
         </FooterStyle>
     )
