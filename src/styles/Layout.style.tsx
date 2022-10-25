@@ -4,7 +4,7 @@ export const Layout =`
     height: 100%;
     display: grid;
     grid-template-columns: minmax(var(--side-spacing), 1fr) auto minmax(auto, 316px) minmax(auto, 316px) auto minmax(var(--side-spacing), 1fr);
-    grid-template-rows: auto auto 1fr 100px;  
+    grid-template-rows: 1fr auto auto 1fr;  
 
     @media only screen and (min-width: 400px) {
         --side-spacing: 5%;
@@ -16,6 +16,8 @@ export const Layout =`
 }
 
 .layout__header {
+    display: grid;
+    align-items: flex-end;
     grid-column: 3 / span 2;
 }
 
@@ -41,6 +43,7 @@ export const Layout =`
         grid-row: 3;
         display: flex;
         align-items: center;
+        margin-bottom: 0;
     }
 }
 
@@ -62,8 +65,6 @@ export const Layout =`
         grid-column: 5;
         padding-left: 60px;
     }
-
-    
 }
 
 .layout__footer {

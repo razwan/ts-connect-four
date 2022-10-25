@@ -6,16 +6,18 @@ import Button from "../Button";
 
 export interface IWinner {
   player: string;
+  onPlayAgainClick?: Function
 }
 
 const Winner: React.FC<IWinner> = (props) => {
   const { player } = props;
+  const onPlayAgainClick = props.onPlayAgainClick ?? (() => {});
 
   return (
     <WinnerWrapper>
-      <WinnerH3>{player}</WinnerH3>
+      <WinnerH3>{ player }</WinnerH3>
       <WinnerH1>WINS</WinnerH1>
-      <Button variant="plain" onClick={() => {}}>
+      <Button variant="plain" onClick={ () => { onPlayAgainClick() } }>
         <Heading size="XS" color={theme.colors.white}>
           PLAY AGAIN
         </Heading>

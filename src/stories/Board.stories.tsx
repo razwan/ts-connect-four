@@ -1,17 +1,34 @@
+import { useContext, useEffect } from 'react';
 import { Story } from '@storybook/react';
-import { Board } from "../components";
+import { Board, ConnectFour } from "../components";
+import AppContext, { withContextProvider } from '../AppContext';
 
 export default {
     title: 'Board',
     component: Board,
 }
 
-const Template: Story = (args: any) => <Board {...args} />;
+const BoardWithGame = withContextProvider(( props: any ) => {
+    const context = useContext( AppContext );
+    const { currentGame, setCurrentGame } = context;
 
-export const BoardPlayer1Turn = Template.bind({});
-BoardPlayer1Turn.args = {
-};
+    console.log( context );
 
-export const BoardPlayer2Turn = Template.bind({});
-BoardPlayer2Turn.args = {
-};
+    useEffect( () => {
+        setCurrentGame( new ConnectFour( 'player1', 'player2' ) );
+    }, [] );
+
+    if ( ! currentGame ) {
+        return null;
+    }
+    
+    return (
+        <div style={ { maxWidth: 800 } }>
+            <Board { ...props } />
+        </div>
+    )
+} )
+
+const Template: Story = (args: any) => <BoardWithGame {...args} />; 
+
+export const BoardStory = Template.bind({});

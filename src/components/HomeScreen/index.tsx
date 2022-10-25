@@ -15,7 +15,7 @@ const HomeScreenView: React.FC<React.PropsWithChildren> = ( props ) => {
         <StartMenu 
             onRulesClick={ () => { setShowRules( true ) } } 
             onStart={ () => {
-                newGameVSPlayer()
+                newGameVSPlayer( 'player1', 'player2' );
             } } />
     )
 }

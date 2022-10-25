@@ -3,14 +3,14 @@ import AppContext from '../../AppContext';
 import { Board, Footer, Header, Modal, PauseMenu, ScoreCard } from '../../components';
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
-  const { setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
+  const { currentGame, setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
 
   return (
       <div className='layout'>
       <div className='layout__header'>
         <Header 
           onMenuClick={ () => { setShowPauseMenu( true ) } } 
-          onRestartClick={ () => { newGameVSPlayer() } } />
+          onRestartClick={ () => { newGameVSPlayer( currentGame!.player1, currentGame!.player2 ) } } />
       </div>
       <div className='layout__scorecard layout__scorecard-1'>
         <ScoreCard position={ 'left' } player={ 'player 1' } score={ playerVsPlayerScore[0] } />
@@ -30,7 +30,7 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
 
 const PauseMenuLayer: React.FC<React.PropsWithChildren | null> = () => {
   const context = useContext( AppContext );
-  const { showPauseMenu, setShowPauseMenu, newGameVSPlayer, setCurrentGame } = context;
+  const { showPauseMenu, setShowPauseMenu, newGameVSPlayer, quitGame } = context;
 
   if ( ! showPauseMenu ) {
     return null;
@@ -45,7 +45,7 @@ const PauseMenuLayer: React.FC<React.PropsWithChildren | null> = () => {
           setShowPauseMenu( false );
          } }
         onQuit={ () => { 
-          setCurrentGame();
+          quitGame();
           setShowPauseMenu( false );
          }}
       />
