@@ -1,24 +1,28 @@
-import React, { ReactText, useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
+
 import AppContext from '../../AppContext';
+import { theme } from "../../styles/Theme.style";
+import { Disc } from "../index";
+
 import {
     BlackLayer,
-    BoardHoleWrapper,
     BoardHole,
+    BoardHoleWrapper,
+    BoardPlayerPointerContainer,
+    BoardPlayerPointerImg,
+    Cell, 
+    Column,
+    LayerEmptyStyles,
     WhiteLayer,
     WhiteBoardHole,
-    BoardPlayerPointerImg,
-    BoardPlayerPointerContainer,
-    Cell, LayerEmptyStyles,
-    Column
 } from "./Board.style"; 
-import { Disc } from "../index";
+
 import Player1Pointer  from "./assets/board-pointer-player-one.svg";
 import Player2Pointer from "./assets/board-pointer-player-two.svg";
-import {theme} from "../../styles/Theme.style";
 
 const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
-    const { winner, setWinner } = context;
+    const { ended, setEnded } = context;
     const game = context.currentGame!;
     const pointer = game.currentPlayer === game.player1 ? Player1Pointer : Player2Pointer;
     const [ board, setBoard ] = useState( game.board );
@@ -29,7 +33,7 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
             <BoardPlayerPointerContainer>
                 <BoardPlayerPointerImg src={ pointer } style={ { 
                     'gridColumn': `${ pointerIndex }`,
-                    'opacity': `${ winner ? 0 : 1 }`
+                    'opacity': `${ ended ? 0 : 1 }`
                 } } />
             </BoardPlayerPointerContainer>
 
@@ -55,8 +59,9 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                                     try {
                                         game.insert( index );
                                         setBoard( game.board );
-                                        if ( game.winner ) {
-                                            setWinner( game.winner );
+
+                                        if ( game.ended ) {
+                                            setEnded( true );
                                         }
                                     } catch( error ) {
                                         console.log( error );

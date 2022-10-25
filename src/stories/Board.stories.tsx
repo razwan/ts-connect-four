@@ -12,8 +12,6 @@ const BoardWithGame = withContextProvider(( props: any ) => {
     const context = useContext( AppContext );
     const { currentGame, setCurrentGame } = context;
 
-    console.log( context );
-
     useEffect( () => {
         setCurrentGame( new ConnectFour( 'player1', 'player2' ) );
     }, [] );

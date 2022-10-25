@@ -36,14 +36,13 @@ export const Layout =`
     
     @media only screen and (min-width: 768px) {
         padding-bottom: 32px;
-        margin-bottom: 32px;
     }
-
+    
     @media only screen and (min-width: 1140px) {
         grid-row: 3;
         display: flex;
         align-items: center;
-        margin-bottom: 0;
+        padding-bottom: 0;
     }
 }
 
