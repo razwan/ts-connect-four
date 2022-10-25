@@ -20,12 +20,17 @@ const Timer: React.FC<ITimer> = (props) => {
 
     const interval = setInterval(() => {
 
-      setTimeLeft(timeLeft => timeLeft - 1);
+      setTimeLeft(timeLeft => {
+        if(timeLeft - 1 === 0){
+          clearInterval(interval);
+        }
+        return timeLeft-1;
+      });
     }, 1000);
 
     return () => clearInterval(interval);
 
-  },[timeLeft]);
+  },[]);
 
   return (
     <TimerWrapper>
