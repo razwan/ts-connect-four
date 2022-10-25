@@ -12,6 +12,14 @@ export const ScoreCardWrapper = styled.div`
   padding: 5px 40px;
   position: relative;
   margin: 2rem;
+  @media (min-width: 768px) {
+    width: 296px;
+    height: 100px;
+  }
+  @media (min-width: 1040px) {
+    width: 141px;
+    height: 160px;
+  } ;
 `;
 
 
