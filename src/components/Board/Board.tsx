@@ -27,7 +27,10 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     return (
         <>
             <BoardPlayerPointerContainer>
-                    <BoardPlayerPointerImg src={ pointer }  style={ { 'gridColumn': `${ pointerIndex }` } } />
+                <BoardPlayerPointerImg src={ pointer } style={ { 
+                    'gridColumn': `${ pointerIndex }`,
+                    'opacity': `${ winner ? 0 : 1 }`
+                } } />
             </BoardPlayerPointerContainer>
 
             <div style={{position: "relative"}}>
@@ -46,7 +49,7 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                     {
                         context.currentGame!.board.map( ( column, index ) => {
                             return (
-                                <Column onMouseEnter={() => {
+                                <Column key={ `column-${ index }` } onMouseEnter={() => {
                                     setPointerIndex( index + 1 )
                                 }} onClick={ () => { 
                                     try {

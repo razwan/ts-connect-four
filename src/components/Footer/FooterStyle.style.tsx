@@ -4,8 +4,11 @@ export const FooterStyle = styled.div`
 position: relative;
 grid-row: 5;
 grid-column: 1 / -1;
+
+display: flex;
+justify-content: center;
+
 height: 100%;
-z-index: -2;
 
 &:before {
     content: "";
@@ -21,4 +24,18 @@ z-index: -2;
     border-top-right-radius: 60px;
     background: ${({ theme }) => theme.colors.darkPurple};
 }
+
+&.has-winner--player1:before {
+    background: ${({ theme }) => theme.colors.pink };
+}
+
+&.has-winner--player2:before {
+    background: ${({ theme }) => theme.colors.yellow };
+}
+`;
+
+export const FooterContentStyle = styled.div`
+    margin-top: -50px;
+    padding-bottom: 50px;
+    z-index: 10;
 `;

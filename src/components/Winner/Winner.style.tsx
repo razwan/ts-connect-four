@@ -1,9 +1,10 @@
 import styled from "styled-components";
+import { XSmallHeading } from "../Heading/Heading.style";
 import { theme } from "../../styles/Theme.style";
 
 export const WinnerWrapper = styled.div`
   text-align: center;
-  padding: 5px 40px;
+  padding: 10px 40px;
   border: 3px solid ${theme.colors.black};
   background-color: ${theme.colors.white};
   border-radius: 20px;
@@ -14,7 +15,7 @@ export const WinnerH1 = styled.h1`
   text-transform: uppercase;
 `;
 
-export const WinnerH3 = styled.h3`
+export const WinnerH3 = styled( XSmallHeading )`
  text-transform:uppercase;
 `;
 
