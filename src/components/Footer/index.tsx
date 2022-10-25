@@ -1,9 +1,12 @@
 import React from 'react';
 import { FooterStyle } from './FooterStyle.style';
+import Timer from '../Timer';
 
 const Footer = () => {
     return (
-        <FooterStyle></FooterStyle>
+        <FooterStyle>
+            <Timer player='PLAYER 1'/>
+        </FooterStyle>
     )
 }
 
