@@ -19,7 +19,6 @@ export const ScoreCardWrapper = styled.div`
   @media (max-width: 768px){
     width: 20%;
   }
-
   @media (min-width: 768px) {
     width: 30%;
   }
