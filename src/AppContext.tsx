@@ -10,7 +10,9 @@ type TAppContext = {
     setCurrentGame: Function,
     newGameVSPlayer: Function,
     playerVsPlayerScore: [ number, number ],
-    playerVsCPUScore: [ number, number ]
+    playerVsCPUScore: [ number, number ],
+    winner?: string,
+    setWinner: Function
 }
 
 type HOC = ( Component: any ) => React.FC<PropsWithChildren>
@@ -22,6 +24,7 @@ const withContextProvider: HOC = ( Component ) => {
     return ( props ) => {
         const [ showRules, setShowRules ] = useState( false );
         const [ showPauseMenu, setShowPauseMenu ] = useState( false );
+        const [ winner, setWinner ] = useState();
         const [ currentGame, setCurrentGame ] = useState<ConnectFour<string> | undefined>();
         const newGameVSPlayer = useCallback( () => {
             setCurrentGame( new ConnectFour( 'player1', 'player2' ) )
@@ -36,7 +39,9 @@ const withContextProvider: HOC = ( Component ) => {
             setShowPauseMenu,
             newGameVSPlayer,
             playerVsPlayerScore: [ 0, 0 ],
-            playerVsCPUScore: [ 0, 0 ]
+            playerVsCPUScore: [ 0, 0 ],
+            winner,
+            setWinner,
         };
 
         return (

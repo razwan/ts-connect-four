@@ -18,6 +18,7 @@ import {theme} from "../../styles/Theme.style";
 
 const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
+    const { winner, setWinner } = context;
     const game = context.currentGame!;
     const pointer = game.currentPlayer === game.player1 ? Player1Pointer : Player2Pointer;
     const [ board, setBoard ] = useState( game.board );
@@ -50,7 +51,10 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                                 }} onClick={ () => { 
                                     try {
                                         game.insert( index );
-                                        setBoard( game.board )
+                                        setBoard( game.board );
+                                        if ( game.winner ) {
+                                            setWinner( game.winner );
+                                        }
                                     } catch( error ) {
                                         console.log( error );
                                     }}}>

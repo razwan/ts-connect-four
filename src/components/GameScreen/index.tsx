@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import AppContext from '../../AppContext'; 
-import { Board, Footer, Header, Modal, PauseMenu, ScoreCard } from '../../components';
+import { Board, Footer, Header, Modal, PauseMenu, ScoreCard, Winner } from '../../components';
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
-  const { setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
+  const { setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore, winner } = useContext( AppContext );
 
   return (
       <div className='layout'>
@@ -22,6 +22,7 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
         <ScoreCard position={ 'right' } player={ 'player 2' } score={ playerVsPlayerScore[1] } />
       </div>
       <div className='layout__footer'>
+        { winner && <Winner player={ winner } /> }
         <Footer />
       </div>
     </div>
