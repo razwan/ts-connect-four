@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import AppContext from '../../AppContext';
 import { theme } from "../../styles/Theme.style";
@@ -28,6 +28,11 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     const game = useMemo( () => context.currentGame!, [ context.currentGame ] )
     const board = useMemo( () => game.board, [ game.board ] );
     const pointer = useMemo( () => game.currentPlayer === player1 ? Player1Pointer : Player2Pointer, [ game.currentPlayer ] );
+    const [ winning, setWinning ] = useState<Array<[number, number]>>( [] );
+
+    useEffect(() => {
+        setWinning( [] );
+    }, [ game ] )
 
     const insertAtIndex = useCallback( ( index: number ) => {
         try {
@@ -37,6 +42,10 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
             
             if ( game.ended ) {
                 endGame( game.winner );
+
+                if ( game.connected ) {
+                    setWinning( game.connected );
+                }
             }
         } catch( error ) {
             console.log( error );
@@ -66,18 +75,23 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                 </BlackLayer>
                 <LayerEmptyStyles>
                     {
-                        context.currentGame!.board.map( ( column, index ) => {
+                        context.currentGame!.board.map( ( column, columnIndex ) => {
                             return (
-                                <Column key={ `column-${ index }` } onMouseEnter={() => {
-                                    setPointerIndex( index + 1 )
-                                }} onClick={ () => { insertAtIndex( index ) } }>
+                                <Column key={ `column-${ columnIndex }` } onMouseEnter={() => {
+                                    setPointerIndex( columnIndex + 1 )
+                                }} onClick={ () => { insertAtIndex( columnIndex ) } }>
 
-                                    { column.map( player => {
+                                    { column.map( ( player, rowIndex ) => {
                                         if ( player === undefined ) {
                                             return <Cell />
                                         }
 
-                                        return <Disc color={ player === player1 ? theme.colors.pink : theme.colors.yellow } />
+                                        return <Disc 
+                                            color={ player === player1 ? theme.colors.pink : theme.colors.yellow } 
+                                            winner={ winning.findIndex( winningDisc => {
+                                                return winningDisc[0] === columnIndex && winningDisc[1] === 5 - rowIndex
+                                            } ) > -1 }
+                                        />
                                     } ) }
                                 </Column>
                             )
