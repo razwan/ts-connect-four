@@ -93,13 +93,13 @@ test( 'cpu throws error if board is already full', () => {
     // arrange
     const game1 = new ConnectFour( 'bianca', 'sabina' );
     const moves = [
-        ...Array(6).fill(0),
-        ...Array(6).fill(1),
-        ...Array(6).fill(2),
-        ...Array(6).fill(3),
-        ...Array(6).fill(4),
-        ...Array(6).fill(5),
-        ...Array(6).fill(6)
+        0,0,0,0,0,0,
+        1,1,1,1,1,1,
+        2,2,2,2,2,2,
+        4,4,4,4,4,4,
+        5,5,5,5,5,5,
+        6,6,6,6,6,3,
+        3,3,3,3,3,6,
     ];
 
     // act

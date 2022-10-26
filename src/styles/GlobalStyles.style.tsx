@@ -29,4 +29,19 @@ export const GlobalStyles = createGlobalStyle`
   .blendMode {
     mix-blend-mode: hard-light;
   }
+
+  @keyframes drop {
+    0% {
+      top: -50vh;
+      opacity: 0;
+    }
+
+    20% {
+      opacity: 1;
+    }
+
+    100% {
+      top: 0;
+    }
+  }
 `

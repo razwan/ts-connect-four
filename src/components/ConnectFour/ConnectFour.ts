@@ -5,7 +5,7 @@ class ConnectAny<T> {
     private _board: Board<T>;
     private _currentPlayer: T;
     private _winner: T | undefined;
-    private _gameEnded = false;
+    private _connected: Array<[number, number]> | undefined;
 
     constructor( 
         private _player1: T,
@@ -35,10 +35,20 @@ class ConnectAny<T> {
     }
     
     private hasEnoughConnected = ( array: Array<any> ) => {
-        return array.some( ( element, index, arr ) => {
-            const slice = arr.slice(index, index + this._connectNo);
-            return slice.length === 4 && ConnectAny.allArrayElementsAreEqual( slice );
-        } )
+        let startIndex = -1;
+        
+        for (let index = 0; index < array.length; index++) {
+            const slice = array.slice(index, index + this._connectNo);
+            const areConnected = slice.length === 4 && ConnectAny.allArrayElementsAreEqual( slice );
+
+            if ( areConnected ) {
+                startIndex = index;
+                break;
+            }
+            
+        }
+        
+        return startIndex;
     }
 
     isInsertLegal( columnIndex: number ) {
@@ -65,16 +75,19 @@ class ConnectAny<T> {
         }
 
         this._board[ columnIndex ].push( this._currentPlayer );
+
+        const connected = this.isWinningMove( columnIndex );
         
-        if ( this.isWinningMove( columnIndex ) ) {
+        if ( connected ) {
             this._winner = this._currentPlayer;
+            this._connected = connected;
             return;
         }
 
         this._currentPlayer = this._currentPlayer === this._player1 ? this._player2 : this._player1;
     }
 
-    isWinningMove( columnIndex: number ) {
+    isWinningMove: ( columnIndex: number ) => Array<[number,number]> | null = ( columnIndex: number ) => {
         const column = this._board[ columnIndex ];
         const rowIndex = column.length - 1;
         const row = this._board.map( column => column[ rowIndex ] );
@@ -85,9 +98,51 @@ class ConnectAny<T> {
             return eachColumn[ rowIndex - ( eachColumnIndex - columnIndex ) ]
         } );
 
-        const directions = [ column, row, diag1, diag2 ];
+        const rowIndexStart = this.hasEnoughConnected( row );
 
-        return directions.some( this.hasEnoughConnected )
+        if ( rowIndexStart > -1 ) {
+            return [
+                [rowIndexStart + 0, rowIndex],
+                [rowIndexStart + 1, rowIndex],
+                [rowIndexStart + 2, rowIndex],
+                [rowIndexStart + 3, rowIndex],
+            ];
+        }
+
+        const colIndexStart = this.hasEnoughConnected( column );
+
+        if ( colIndexStart > -1 ) {
+            return [
+                [columnIndex, colIndexStart + 0],
+                [columnIndex, colIndexStart + 1],
+                [columnIndex, colIndexStart + 2],
+                [columnIndex, colIndexStart + 3],
+            ];
+        }
+
+        const diag1Start = this.hasEnoughConnected( diag1 );
+
+        if ( diag1Start > -1 ) {
+            return [
+                [diag1Start + 0, rowIndex - columnIndex + diag1Start + 0],
+                [diag1Start + 1, rowIndex - columnIndex + diag1Start + 1],
+                [diag1Start + 2, rowIndex - columnIndex + diag1Start + 2],
+                [diag1Start + 3, rowIndex - columnIndex + diag1Start + 3],
+            ];
+        }
+
+        const diag2Start = this.hasEnoughConnected( diag2 );
+
+        if ( diag2Start > -1 ) {
+            return [
+                [diag2Start + 0, rowIndex - columnIndex + diag2Start - 0],
+                [diag2Start + 1, rowIndex - columnIndex + diag2Start - 1],
+                [diag2Start + 2, rowIndex - columnIndex + diag2Start - 2],
+                [diag2Start + 3, rowIndex - columnIndex + diag2Start - 3],
+            ];
+        }
+
+        return null;
     }
 
     public getCPUInsertIndex(): number {
@@ -123,6 +178,10 @@ class ConnectAny<T> {
 
     public get ended() {
         return this._winner || this._board.every( col => col.length === this._rowsNo );
+    }
+
+    public get connected() {
+        return this._connected;
     }
 }
 
