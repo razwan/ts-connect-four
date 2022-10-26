@@ -34,12 +34,15 @@ const withContextProvider: HOC = ( Component ) => {
         const newGameVSPlayer = useCallback( ( player1: string, player2: string ) => {
             setCurrentGame( new ConnectFour( player1, player2 ) );
             setWinner( undefined );
+            setEnded( false );
         }, [] );
         const quitGame = useCallback( () => {
             setCurrentGame( undefined );
+            setEnded( false );
         }, [] );
         const restartGame = useCallback( () => {
             setCurrentGame( new ConnectFour( currentGame!.player1, currentGame!.player2 ) );
+            setEnded( false );
         }, [] );
 
         const context: TAppContext = {
