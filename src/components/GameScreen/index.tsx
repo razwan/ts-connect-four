@@ -3,9 +3,7 @@ import AppContext from '../../AppContext';
 import { Board, Footer, Header, Modal, PauseMenu, ScoreCard } from '../../components';
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
-  const { currentGame, setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
-    const context = useContext( AppContext );
-    const game = context.currentGame!;
+  const { currentGame, setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore, player1, player2 } = useContext( AppContext );
 
   return (
       <div className='layout'>
@@ -14,18 +12,16 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
           onMenuClick={ () => { setShowPauseMenu( true ) } } 
           onRestartClick={ () => {
               newGameVSPlayer( currentGame!.player1, currentGame!.player2 );
-              game.removeItemFromLocalStorage('score');
-              context.setPlayerVsPlayerScore([0,0]);
           } } />
       </div>
       <div className='layout__scorecard layout__scorecard-1'>
-        <ScoreCard position={ 'left' } player={ 'player 1' } score={ playerVsPlayerScore[0] } />
+        <ScoreCard position={ 'left' } player={ player1 } score={ playerVsPlayerScore[0] } />
       </div>
       <div className='layout__game'>
         <Board />
       </div>
       <div className='layout__scorecard layout__scorecard-2'>
-        <ScoreCard position={ 'right' } player={ 'player 2' } score={ playerVsPlayerScore[1] } />
+        <ScoreCard position={ 'right' } player={ player2 } score={ playerVsPlayerScore[1] } />
       </div>
       <div className='layout__footer'>
         <Footer />
@@ -36,7 +32,7 @@ const GameView: React.FC<React.PropsWithChildren> = () => {
 
 const PauseMenuLayer: React.FC<React.PropsWithChildren | null> = () => {
   const context = useContext( AppContext );
-  const { showPauseMenu, setShowPauseMenu, newGameVSPlayer, quitGame } = context;
+  const { showPauseMenu, setShowPauseMenu, currentGame, newGameVSPlayer, quitGame } = context;
 
   if ( ! showPauseMenu ) {
     return null;
@@ -47,7 +43,7 @@ const PauseMenuLayer: React.FC<React.PropsWithChildren | null> = () => {
       <PauseMenu 
         onContinue={ () => { setShowPauseMenu( false ) } } 
         onRestart={ () => { 
-          newGameVSPlayer();
+          newGameVSPlayer( currentGame!.player1, currentGame!.player2);
           setShowPauseMenu( false );
          } }
         onQuit={ () => { 

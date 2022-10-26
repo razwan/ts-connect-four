@@ -5,9 +5,9 @@ import AppContext from '../../AppContext';
 import Timer from '../Timer';
 
 const Footer = () => {
-    const { ended, winner, currentGame, newGameVSPlayer, currentPlayer } = useContext( AppContext );
-    const winnerIsPlayer1 = winner === currentGame!.player1;
-    const winnerString = winnerIsPlayer1 ? currentGame!.player1 : currentGame!.player2;
+    const { ended, winner, currentGame, newGameVSPlayer, currentPlayer, player1 } = useContext( AppContext );
+    const winnerIsPlayer1 = winner === player1;
+    const winnerString = winnerIsPlayer1 ? 'player1' : 'player2';
     const className = `${ winner ? `has-winner has-winner--${ winnerString }` : '' }`;
 
     return (

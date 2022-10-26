@@ -29,6 +29,9 @@ type TAppContext = {
   playerVsPlayerScore: [number, number];
   setPlayerVsPlayerScore: Function;
   playerVsCPUScore: [number, number];
+  player1: string;
+  player2: string;
+  endGame: Function,
 };
 
 type HOC = (Component: any) => React.FC<PropsWithChildren>;
@@ -39,21 +42,20 @@ const withContextProvider: HOC = (Component) => {
   return (props) => {
     const [showRules, setShowRules] = useState(false);
     const [showPauseMenu, setShowPauseMenu] = useState(false);
-    const [winner, setWinner] = useState();
+    const [winner, setWinner] = useState<string>();
     const [ended, setEnded] = useState(false);
     const [currentGame, setCurrentGame] = useState<ConnectFour<string> | undefined>();
     const [currentPlayer, setCurrentPlayer] = useState<string | undefined>();
     const [timer, setTimer] = useState<number>(30);
-    const [ playerVsPlayerScore, setPlayerVsPlayerScore ] = useState<[number, number]>([0 ,0]);
+    const [ playerVsPlayerScore, setPlayerVsPlayerScore ] = useState<[number, number]>([ 0, 0 ]);
+    const [ player1, setPlayer1 ] = useState( 'razvan' );
+    const [ player2, setPlayer2 ] = useState( 'madalina' );
 
-    useEffect(() => {
-      setCurrentPlayer(currentGame?.currentPlayer);
-      setWinner(undefined);
-      setEnded(false);
-    }, [currentGame]);
-
-    const newGameVSPlayer = useCallback((player1: string, player2: string) => {
-      setCurrentGame(new ConnectFour(player1, player2));
+    const newGameVSPlayer = useCallback(( p1: string, p2: string) => {
+      setCurrentGame(new ConnectFour(p1, p2));
+      setCurrentPlayer( p1 );
+      setWinner( undefined );
+      setEnded( false );
     }, []);
 
     const quitGame = useCallback(() => {
@@ -62,11 +64,29 @@ const withContextProvider: HOC = (Component) => {
 
     const restartGame = useCallback(() => {
       setCurrentGame( new ConnectFour(currentGame!.player1, currentGame!.player2) );
+      setWinner( undefined );
+      setEnded( false );
     }, []);
 
     const resetTimer = useCallback(() => {
       setTimer(30);
     }, []);
+
+    const endGame = useCallback(( winner: string ) => {
+      setEnded( true );
+
+      if ( winner ) {
+        setWinner( winner );
+
+        if( player1 === winner ) {
+          setPlayerVsPlayerScore( [ playerVsPlayerScore[0] + 1, playerVsPlayerScore[1] ] );
+        }
+
+        if( player2 === winner ) {
+            setPlayerVsPlayerScore( [ playerVsPlayerScore[0], playerVsPlayerScore[1] + 1 ] );
+        }
+      }
+    }, [ playerVsPlayerScore ] );
 
     const context: TAppContext = {
       showRules,
@@ -90,6 +110,9 @@ const withContextProvider: HOC = (Component) => {
       playerVsPlayerScore,
       setPlayerVsPlayerScore,
       playerVsCPUScore: [0, 0],
+      player1,
+      player2,
+      endGame,
     };
 
     return (
