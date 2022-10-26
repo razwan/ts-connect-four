@@ -1,10 +1,12 @@
 import React from "react";
 
 import {
-  ScoreCardH2,
-  ScoreCardH3,
+  ScoreCardScore,
   ScoreCardWrapper,
+  PositionedScoreCardEmoji,
 } from "./ScoreCard.style";
+
+import { MediumHeading } from "../Heading/Heading.style";
 
 import ScoreCardEmoji from "../ScoreCardEmoji/ScoreCardEmoji";
 
@@ -17,10 +19,12 @@ export interface PScoreCard {
 const ScoreCard: React.FC<PScoreCard> = (props) => {
   const { position, player, score } = props;
   return (
-      <ScoreCardWrapper>
-        <ScoreCardEmoji position={position} />
-        <ScoreCardH3 as="div">{ player }</ScoreCardH3>
-        <ScoreCardH2 as="div">{ score }</ScoreCardH2>
+      <ScoreCardWrapper position={position}>
+        <PositionedScoreCardEmoji position={position}>
+          <ScoreCardEmoji position={position} />
+        </PositionedScoreCardEmoji>
+        <ScoreCardScore as="div">{ player }</ScoreCardScore>
+        <MediumHeading as="div">{ score }</MediumHeading> 
       </ScoreCardWrapper>
   );
 };

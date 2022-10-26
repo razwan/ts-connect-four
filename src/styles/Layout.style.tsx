@@ -48,7 +48,7 @@ export const Layout =`
 
 .layout__scorecard-1 {
     grid-column: 3;
-    padding-right: 18px;
+    padding-right: 6%;
     
     @media only screen and (min-width: 1140px) {
         grid-column: 2;
@@ -58,7 +58,7 @@ export const Layout =`
 
 .layout__scorecard-2 {
     grid-column: 4;
-    padding-left: 18px;
+    padding-left: 6%;
 
     @media only screen and (min-width: 1140px) {
         grid-column: 5;
