@@ -47,9 +47,21 @@ const withContextProvider: HOC = (Component) => {
     const [currentGame, setCurrentGame] = useState<ConnectFour<string> | undefined>();
     const [currentPlayer, setCurrentPlayer] = useState<string | undefined>();
     const [timer, setTimer] = useState<number>(30);
-    const [ playerVsPlayerScore, setPlayerVsPlayerScore ] = useState<[number, number]>([ 0, 0 ]);
     const [ player1, setPlayer1 ] = useState( 'razvan' );
     const [ player2, setPlayer2 ] = useState( 'madalina' );
+    
+    const score = localStorage.getItem( 'pvpScore' );
+    const initialScore = score ? JSON.parse( score ) : [0, 0];
+
+    const [ playerVsPlayerScore, setPlayerVsPlayerScore ] = useState<[number, number]>(initialScore);
+
+    useEffect( () => {
+      localStorage.setItem( 'pvpScore', JSON.stringify( playerVsPlayerScore ) );
+    }, [ playerVsPlayerScore ] );
+
+    useEffect( () => {
+      localStorage.setItem( 'currentGame', JSON.stringify( currentGame ) );
+    }, [ currentGame ] );
 
     const newGameVSPlayer = useCallback(( p1: string, p2: string) => {
       setCurrentGame(new ConnectFour(p1, p2));
