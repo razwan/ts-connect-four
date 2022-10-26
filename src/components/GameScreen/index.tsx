@@ -4,13 +4,19 @@ import { Board, Footer, Header, Modal, PauseMenu, ScoreCard } from '../../compon
 
 const GameView: React.FC<React.PropsWithChildren> = () => {
   const { currentGame, setShowPauseMenu, newGameVSPlayer, playerVsPlayerScore } = useContext( AppContext );
+    const context = useContext( AppContext );
+    const game = context.currentGame!;
 
   return (
       <div className='layout'>
       <div className='layout__header'>
         <Header 
           onMenuClick={ () => { setShowPauseMenu( true ) } } 
-          onRestartClick={ () => { newGameVSPlayer( currentGame!.player1, currentGame!.player2 ) } } />
+          onRestartClick={ () => {
+              newGameVSPlayer( currentGame!.player1, currentGame!.player2 );
+              game.removeItemFromLocalStorage('score');
+              context.setPlayerVsPlayerScore([0,0]);
+          } } />
       </div>
       <div className='layout__scorecard layout__scorecard-1'>
         <ScoreCard position={ 'left' } player={ 'player 1' } score={ playerVsPlayerScore[0] } />

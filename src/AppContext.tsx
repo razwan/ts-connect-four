@@ -14,8 +14,6 @@ type TAppContext = {
   setShowPauseMenu: Function;
   currentGame?: ConnectFour<string>;
   setCurrentGame: Function;
-  playerVsPlayerScore: [number, number];
-  playerVsCPUScore: [number, number];
   winner?: string;
   setWinner: Function;
   ended: Boolean;
@@ -28,6 +26,9 @@ type TAppContext = {
   resetTimer: Function;
   timer: number;
   setTimer: Function;
+  playerVsPlayerScore: [number, number];
+  setPlayerVsPlayerScore: Function;
+  playerVsCPUScore: [number, number];
 };
 
 type HOC = (Component: any) => React.FC<PropsWithChildren>;
@@ -40,10 +41,10 @@ const withContextProvider: HOC = (Component) => {
     const [showPauseMenu, setShowPauseMenu] = useState(false);
     const [winner, setWinner] = useState();
     const [ended, setEnded] = useState(false);
-    const [currentGame, setCurrentGame] =
-      useState<ConnectFour<string> | undefined>();
+    const [currentGame, setCurrentGame] = useState<ConnectFour<string> | undefined>();
     const [currentPlayer, setCurrentPlayer] = useState<string | undefined>();
     const [timer, setTimer] = useState<number>(30);
+    const [ playerVsPlayerScore, setPlayerVsPlayerScore ] = useState<[number, number]>([0 ,0]);
 
     useEffect(() => {
       setCurrentPlayer(currentGame?.currentPlayer);
@@ -57,14 +58,12 @@ const withContextProvider: HOC = (Component) => {
 
     const quitGame = useCallback(() => {
       setCurrentGame(undefined);
-      setEnded(false);
     }, []);
+
     const restartGame = useCallback(() => {
-      setCurrentGame(
-        new ConnectFour(currentGame!.player1, currentGame!.player2)
-      );
-      setEnded(false);
+      setCurrentGame( new ConnectFour(currentGame!.player1, currentGame!.player2) );
     }, []);
+
     const resetTimer = useCallback(() => {
       setTimer(30);
     }, []);
@@ -77,8 +76,6 @@ const withContextProvider: HOC = (Component) => {
       showPauseMenu,
       setShowPauseMenu,
       newGameVSPlayer,
-      playerVsPlayerScore: [0, 0],
-      playerVsCPUScore: [0, 0],
       winner,
       setWinner,
       ended,
@@ -90,6 +87,9 @@ const withContextProvider: HOC = (Component) => {
       resetTimer,
       timer,
       setTimer,
+      playerVsPlayerScore,
+      setPlayerVsPlayerScore,
+      playerVsCPUScore: [0, 0],
     };
 
     return (

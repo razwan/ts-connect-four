@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, {useContext, useState} from 'react';
 
 import AppContext from '../../AppContext';
 import { theme } from "../../styles/Theme.style";
@@ -24,9 +24,11 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
     const { ended, setEnded, setWinner, setCurrentPlayer, resetTimer } = context;
     const game = context.currentGame!;
+    const currentScore = context.playerVsPlayerScore;
     const pointer = game.currentPlayer === game.player1 ? Player1Pointer : Player2Pointer;
     const [ board, setBoard ] = useState( game.board );
     const [ pointerIndex, setPointerIndex ] = useState( 1 );
+    let newScore: number[];
 
     return (
         <>
@@ -69,6 +71,21 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                                                 setWinner( game.currentPlayer );
                                             }
                                         }
+
+                                        if( game.winner !== undefined ) {
+                                            if( game.player1 === game.winner) {
+                                                newScore = currentScore;
+                                                newScore[0] = newScore[0] + 1;
+                                                context.setPlayerVsPlayerScore(newScore);
+                                            } else {
+                                                newScore = currentScore;
+                                                newScore[1] = newScore[1] + 1;
+                                                context.setPlayerVsPlayerScore(newScore);
+                                            }
+
+                                            localStorage.setItem('score',JSON.stringify(newScore));
+                                        }
+
                                     } catch( error ) {
                                         console.log( error );
                                     }}}>
