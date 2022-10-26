@@ -22,7 +22,7 @@ import Player2Pointer from "./assets/board-pointer-player-two.svg";
 
 const Board: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
-    const { ended, setEnded, setWinner } = context;
+    const { ended, setEnded, setWinner, setCurrentPlayer, resetTimer } = context;
     const game = context.currentGame!;
     const pointer = game.currentPlayer === game.player1 ? Player1Pointer : Player2Pointer;
     const [ board, setBoard ] = useState( game.board );
@@ -59,6 +59,8 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                                     try {
                                         game.insert( index );
                                         setBoard( game.board );
+                                        setCurrentPlayer(game.currentPlayer);
+                                        resetTimer();
 
                                         if ( game.ended ) {
                                             setEnded( true );
