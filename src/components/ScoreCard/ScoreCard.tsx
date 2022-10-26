@@ -1,4 +1,3 @@
-import React from "react";
 
 import {
   ScoreCardScore,
@@ -18,6 +17,7 @@ export interface PScoreCard {
 
 const ScoreCard: React.FC<PScoreCard> = (props) => {
   const { position, player, score } = props;
+  
   return (
       <ScoreCardWrapper position={position}>
         <PositionedScoreCardEmoji position={position}>

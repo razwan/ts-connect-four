@@ -5,7 +5,7 @@ import AppContext from '../../AppContext';
 
 const HomeScreenView: React.FC<React.PropsWithChildren> = ( props ) => {
     const context = useContext( AppContext );
-    const { showRules, setShowRules, newGameVSPlayer } = context;
+    const { showRules, setShowRules, newGameVSPlayer, player1, player2 } = context;
     
     if ( showRules ) {
         return <OverlayRules onClose={ () => { setShowRules( false ) } } />
@@ -15,7 +15,7 @@ const HomeScreenView: React.FC<React.PropsWithChildren> = ( props ) => {
         <StartMenu 
             onRulesClick={ () => { setShowRules( true ) } } 
             onStart={ () => {
-                newGameVSPlayer( 'player1', 'player2' );
+                newGameVSPlayer( player1, player2 );
             } } />
     )
 }
