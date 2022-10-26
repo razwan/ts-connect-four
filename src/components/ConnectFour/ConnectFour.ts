@@ -8,11 +8,11 @@ class ConnectAny<T> {
     private _gameEnded = false;
 
     constructor( 
-        private _player1: T, 
-        private _player2: T, 
-        private _connectNo: number, 
-        private _columnsNo: number, 
-        private _rowsNo: number 
+        private _player1: T,
+        private _player2: T,
+        private _connectNo: number,
+        private _columnsNo: number,
+        private _rowsNo: number
     ) {
         this._board = Array(this._columnsNo).fill(undefined).map( () => [] );
         this._currentPlayer = this._player1;
@@ -88,6 +88,21 @@ class ConnectAny<T> {
         const directions = [ column, row, diag1, diag2 ];
 
         return directions.some( this.hasEnoughConnected )
+    }
+
+    public getCPUInsertIndex(): number {
+        const validIndexes: number[] = [];
+        this.board.forEach( (column, index) => {
+            if (column.length < this._rowsNo) {
+                validIndexes.push(index);
+            }
+        });
+
+        if(validIndexes.length === 0) {
+            throw new Error( 'Board is already full' );
+        }
+
+        return validIndexes[Math.floor(Math.random() * validIndexes.length)];
     }
 
     public get winner() {

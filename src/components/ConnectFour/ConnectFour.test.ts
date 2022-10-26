@@ -85,6 +85,26 @@ test( 'cannot insert in a full column', () => {
 test( 'board is empty at beginning of the game', () => {
     const game1 = new ConnectFour( 'razvan', 'madalina' );
     const emptyColumn = Array(6).fill(undefined).map( () => undefined );
-    const emptyBoard = Array(7).fill(undefined).map( () => emptyColumn ); 
+    const emptyBoard = Array(7).fill(undefined).map( () => emptyColumn );
     expect( game1.board ).toEqual( emptyBoard );
+} )
+
+test( 'cpu throws error if board is already full', () => {
+    // arrange
+    const game1 = new ConnectFour( 'bianca', 'sabina' );
+    const moves = [
+        ...Array(6).fill(0),
+        ...Array(6).fill(1),
+        ...Array(6).fill(2),
+        ...Array(6).fill(3),
+        ...Array(6).fill(4),
+        ...Array(6).fill(5),
+        ...Array(6).fill(6)
+    ];
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( () => { game1.getCPUInsertIndex() } ).toThrow();
 } )
