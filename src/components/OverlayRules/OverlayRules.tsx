@@ -5,7 +5,7 @@ import {
   RulesHeadingH2,
   RulesHeadingH3,
   OverlayRulesCheckWrapper
-} from "./OverlayRules.style";
+} from "./OverlayRules.style"; 
 
 import { theme } from "../../styles/Theme.style";
 import OverlayRulesCheck from "../OverlayRulesCheck/OverlayRulesCheck";

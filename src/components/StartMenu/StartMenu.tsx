@@ -4,7 +4,6 @@ import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import { StartMenuWrapper } from "./StartMenu.style";
 import playerVsPlayerImg from "./assets/player-vs-player.svg";
-import playerVsCPUImg from "./assets/player-vs-cpu.svg";
 
 export interface IStartMenu {
   className?: string;
