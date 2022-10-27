@@ -122,7 +122,7 @@ test('no player wins when board is full and game ended', () => {
    moves.forEach( move => game1.insert(move));
 
     // assert
-    expect(game1.ended).toEqual(true); 
+    expect(game1.ended).toEqual(true);
     expect(game1.winner).toEqual(undefined);
 
 } )
@@ -201,5 +201,124 @@ test( 'connected returns the correct pairs if the game is won on a diagonal', ()
 
   // assert
   expect( game1.connected ).toEqual([[0, 0], [1, 1], [2, 2], [3, 3]]);
+} )
+
+
+test( 'board returns array for 1 disc inserted', () => {
+    // arrange
+    const game1 = new ConnectFour( 'player1', 'player2' );
+    const moves = [
+        0
+    ];
+    const returnedArray = [
+        [undefined,undefined,undefined,undefined, undefined, 'player1'],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined]
+    ]
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( game1.board ).toEqual( returnedArray );
+} )
+
+test( 'board returns if player 1 wins ', () => {
+    // arrange
+    const game1 = new ConnectFour( 'player1', 'player2' );
+    const moves = [
+        0,3,0,4,0,4,
+        0
+    ];
+    const returnedArray = [
+        [undefined,undefined,'player1','player1', 'player1', 'player1'],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, 'player2'],
+        [undefined,undefined,undefined,undefined, 'player2', 'player2'],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined]
+    ]
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( game1.board ).toEqual( returnedArray );
+} )
+
+test( 'board returns if player 2 wins ', () => {
+    // arrange
+    const game1 = new ConnectFour( 'player1', 'player2' );
+    const moves = [
+        0,3,1,4,0,5,
+        1,6
+    ];
+    const returnedArray = [
+        [undefined,undefined,undefined,undefined, 'player1', 'player1'],
+        [undefined,undefined,undefined,undefined, 'player1', 'player1'],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, 'player2'],
+        [undefined,undefined,undefined,undefined, undefined, 'player2'],
+        [undefined,undefined,undefined,undefined, undefined, 'player2'],
+        [undefined,undefined,undefined,undefined, undefined, 'player2']
+    ]
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( game1.board ).toEqual( returnedArray );
+} )
+
+test( 'board returns if game is draw ', () => {
+    // arrange
+    const game1 = new ConnectFour( 'player1', 'player2' );
+    const moves = [
+        0,0,0,0,0,0,
+        1,1,1,1,1,1,
+        2,2,2,2,2,2,
+        5,5,5,5,5,5,
+        6,6,6,6,6,6,
+        4,3,3,4,4,3,
+        3,4,4,3,3,4
+
+    ];
+    const returnedArray = [
+        ['player2','player1','player2','player1', 'player2', 'player1'],
+        ['player2','player1','player2','player1', 'player2', 'player1'],
+        ['player2','player1','player2','player1', 'player2', 'player1'],
+        ['player1','player2','player1','player2', 'player1', 'player2'],
+        ['player2','player1','player2','player1', 'player2', 'player1'],
+        ['player2','player1','player2','player1', 'player2', 'player1'],
+        ['player2','player1','player2','player1', 'player2', 'player1']
+    ]
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( game1.board ).toEqual( returnedArray );
+} )
+
+test( 'board returns if board is empty ', () => {
+    // arrange
+    const game1 = new ConnectFour( 'player1', 'player2' );
+    const returnedArray = [
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined],
+        [undefined,undefined,undefined,undefined, undefined, undefined]
+    ]
+
+    // assert
+    expect( game1.board ).toEqual( returnedArray );
 } )
 
