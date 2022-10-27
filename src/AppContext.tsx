@@ -68,6 +68,7 @@ const withContextProvider: HOC = (Component) => {
       setCurrentPlayer( p1 );
       setWinner( undefined );
       setEnded( false );
+      resetTimer();
     }, []);
 
     const quitGame = useCallback(() => {
@@ -78,6 +79,7 @@ const withContextProvider: HOC = (Component) => {
       setCurrentGame( new ConnectFour(currentGame!.player1, currentGame!.player2) );
       setWinner( undefined );
       setEnded( false );
+      resetTimer();
     }, []);
 
     const resetTimer = useCallback(() => {
