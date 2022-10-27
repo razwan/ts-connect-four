@@ -112,20 +112,94 @@ test( 'cpu throws error if board is already full', () => {
 test('no player wins when board is full and game ended', () => {
 
     // arrange
-
-        const game1 = new ConnectFour("madalina", "bianca");
-        const moves = [
-          0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
-          4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 3, 3, 3, 3, 3, 3, 6,
-        ];
+    const game1 = new ConnectFour("madalina", "bianca");
+    const moves = [
+      0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
+      4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 3, 3, 3, 3, 3, 3, 6,
+    ];
 
     // act
-       
-       moves.forEach( move => game1.insert(move));
+   moves.forEach( move => game1.insert(move));
 
     // assert
+    expect(game1.ended).toEqual(true); 
+    expect(game1.winner).toEqual(undefined);
 
-        expect(game1.ended).toEqual(true); 
-        expect(game1.winner).toEqual(undefined);
+} )
 
-    })
+test( 'connected returns undefined if the game ends with no winner', () => {
+    // arrange
+    const game1 = new ConnectFour( 'bianca', 'sabina' );
+    const moves = [
+        0,0,0,0,0,0,
+        1,1,1,1,1,1,
+        2,2,2,2,2,2,
+        4,4,4,4,4,4,
+        5,5,5,5,5,5,
+        6,6,6,6,6,3,
+        3,3,3,3,3,6,
+    ];
+
+    // act
+    moves.forEach( move => game1.insert( move ) );
+
+    // assert
+    expect( game1.connected ).toBeUndefined();
+} )
+
+test( 'connected returns undefined if the game started but no player won yet', () => {
+  // arrange
+  const game1 = new ConnectFour( 'bianca', 'sabina' );
+  const moves = [
+      0,0,0,0,0,0
+  ];
+
+  // act
+  moves.forEach( move => game1.insert( move ) );
+
+  // assert
+  expect( game1.connected ).toBeUndefined();
+} )
+
+test( 'connected returns the correct pairs if the game is won on a column', () => {
+  // arrange
+  const game1 = new ConnectFour( 'bianca', 'sabina' );
+  const moves = [
+      0, 1, 0, 1, 0, 1, 0
+  ];
+
+  // act
+  moves.forEach( move => game1.insert( move ) );
+
+  // assert
+  expect( game1.connected ).toEqual([[0, 0], [0, 1], [0, 2], [0, 3]]);
+} )
+
+test( 'connected returns the correct pairs if the game is won on a row', () => {
+  // arrange
+  const game1 = new ConnectFour( 'bianca', 'sabina' );
+  const moves = [
+      0, 0, 1, 1, 2, 2, 3
+  ];
+
+  // act
+  moves.forEach( move => game1.insert( move ) );
+
+  // assert
+  expect( game1.connected ).toEqual([[0, 0], [1, 0], [2, 0], [3, 0]]);
+} )
+
+test( 'connected returns the correct pairs if the game is won on a diagonal', () => {
+  // arrange
+  const game1 = new ConnectFour( 'bianca', 'sabina' );
+  const moves = [
+      0, 1, 1, 2, 2, 3, 2, 3, 3, 0, 3
+  ];
+
+  // act
+  moves.forEach( move => game1.insert( move ) );
+
+  // assert
+  expect( game1.connected ).toEqual([[0, 0], [1, 1], [2, 2], [3, 3]]);
+} )
+
