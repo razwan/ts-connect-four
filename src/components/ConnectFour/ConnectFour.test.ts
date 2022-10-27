@@ -109,6 +109,24 @@ test( 'cpu throws error if board is already full', () => {
     expect( () => { game1.getCPUInsertIndex() } ).toThrow();
 } )
 
+test('no player wins when board is full and game ended', () => {
+
+    // arrange
+    const game1 = new ConnectFour("madalina", "bianca");
+    const moves = [
+      0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
+      4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 3, 3, 3, 3, 3, 3, 6,
+    ];
+
+    // act
+   moves.forEach( move => game1.insert(move));
+
+    // assert
+    expect(game1.ended).toEqual(true); 
+    expect(game1.winner).toEqual(undefined);
+
+} )
+
 test( 'connected returns undefined if the game ends with no winner', () => {
     // arrange
     const game1 = new ConnectFour( 'bianca', 'sabina' );
@@ -157,7 +175,6 @@ test( 'connected returns the correct pairs if the game is won on a column', () =
   expect( game1.connected ).toEqual([[0, 0], [0, 1], [0, 2], [0, 3]]);
 } )
 
-
 test( 'connected returns the correct pairs if the game is won on a row', () => {
   // arrange
   const game1 = new ConnectFour( 'bianca', 'sabina' );
@@ -185,3 +202,4 @@ test( 'connected returns the correct pairs if the game is won on a diagonal', ()
   // assert
   expect( game1.connected ).toEqual([[0, 0], [1, 1], [2, 2], [3, 3]]);
 } )
+
