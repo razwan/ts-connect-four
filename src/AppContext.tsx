@@ -47,8 +47,8 @@ const withContextProvider: HOC = (Component) => {
     const [currentGame, setCurrentGame] = useState<ConnectFour<string> | undefined>();
     const [currentPlayer, setCurrentPlayer] = useState<string | undefined>();
     const [timer, setTimer] = useState<number>(30);
-    const [ player1, setPlayer1 ] = useState( 'razvan' );
-    const [ player2, setPlayer2 ] = useState( 'madalina' );
+    const [ player1, setPlayer1 ] = useState( 'player 1' );
+    const [ player2, setPlayer2 ] = useState( 'player 2' );
     
     const score = localStorage.getItem( 'pvpScore' );
     const initialScore = score ? JSON.parse( score ) : [0, 0];
