@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.js": "/static/js/main.e924b7f1.js",
+    "static/js/787.3f54d78a.chunk.js": "/static/js/787.3f54d78a.chunk.js",
+    "static/media/logo.svg": "/static/media/logo.920ba77de8ec72d3f76607c35fd299f6.svg",
+    "static/media/Rectangle.svg": "/static/media/Rectangle.23a12fb8a02e4f84d54fb20976c28d89.svg",
+    "static/media/Rectangle2.svg": "/static/media/Rectangle2.fc53bb0ce70f9fd5447db052d4da7329.svg",
+    "static/media/player-vs-player.svg": "/static/media/player-vs-player.5e85b008867c54954d0175644d3eb6b1.svg",
+    "static/media/board-pointer-player-two.svg": "/static/media/board-pointer-player-two.ec58d359b7d0e4e1293fdaf3104d3999.svg",
+    "static/media/board-pointer-player-one.svg": "/static/media/board-pointer-player-one.ab011f93c2c7b1cd394fc03dad98ea9e.svg",
+    "static/media/player-two.svg": "/static/media/player-two.e71f9dae10ef70da22b419dd7c5d3dd1.svg",
+    "static/media/player-one.svg": "/static/media/player-one.2f557f9c351bdce0d93c7fbd7b2365ae.svg",
+    "index.html": "/index.html",
+    "static/media/icon-check-hover.svg": "/static/media/icon-check-hover.b186a179418eab0b71de2f6bb955dba3.svg",
+    "static/media/icon-check.svg": "/static/media/icon-check.b8b0ddbc57b45ac869808e16f7a0f553.svg",
+    "main.e924b7f1.js.map": "/static/js/main.e924b7f1.js.map",
+    "787.3f54d78a.chunk.js.map": "/static/js/787.3f54d78a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.e924b7f1.js"
+  ]
+}
