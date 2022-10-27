@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import React, { Fragment, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
 import AppContext from '../../AppContext';
 import { theme } from "../../styles/Theme.style";
@@ -63,15 +63,19 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
 
             <div style={{position: "relative"}}>
                 <BlackLayer>
-                {board.map((column, columnIndex) => {
-                        return column.map( ( player, rowIndex ) => {
-                            return (
-                            <BoardHoleWrapper key={ `${ columnIndex }-${ rowIndex }` }>
-                                <BoardHole></BoardHole>
-                            </BoardHoleWrapper>
-                            )
-                        } );
-                    })}
+                    { board.map((column, columnIndex) => {
+                        return (
+                            <Fragment key={ `${ columnIndex }` }>
+                                { column.map( ( player, rowIndex ) => {
+                                    return (
+                                        <BoardHoleWrapper key={ `${ columnIndex }-${ rowIndex }` }>
+                                            <BoardHole></BoardHole>
+                                        </BoardHoleWrapper>
+                                    )
+                                } ) }
+                            </Fragment>
+                        ) 
+                    } ) }
                 </BlackLayer>
                 <LayerEmptyStyles>
                     {
@@ -83,10 +87,11 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
 
                                     { column.map( ( player, rowIndex ) => {
                                         if ( player === undefined ) {
-                                            return <Cell />
+                                            return <Cell key={ `${ columnIndex }-${ rowIndex }` } />
                                         }
 
                                         return <Disc 
+                                            key={ `${ columnIndex }-${ rowIndex }` }
                                             color={ player === player1 ? theme.colors.pink : theme.colors.yellow } 
                                             winner={ winning.findIndex( winningDisc => {
                                                 return winningDisc[0] === columnIndex && winningDisc[1] === 5 - rowIndex
@@ -100,13 +105,17 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
                 </LayerEmptyStyles>
                 <WhiteLayer className="white-layer">
                     {board.map((column, columnIndex) => {
-                        return column.map( ( player, rowIndex ) => {
-                            return (
-                                <BoardHoleWrapper key={ `${ columnIndex }-${ rowIndex }` }>
-                                    <WhiteBoardHole></WhiteBoardHole>
-                                </BoardHoleWrapper>
-                            )
-                        } );
+                        return (
+                            <Fragment key={ `${ columnIndex }` }>
+                                { column.map( ( player, rowIndex ) => {
+                                    return (
+                                        <BoardHoleWrapper key={ `${ columnIndex }-${ rowIndex }` }>
+                                            <WhiteBoardHole></WhiteBoardHole>
+                                        </BoardHoleWrapper>
+                                    )
+                                } ) }
+                            </Fragment>
+                        )
                     })}
                 </WhiteLayer>
             </div>
