@@ -108,3 +108,24 @@ test( 'cpu throws error if board is already full', () => {
     // assert
     expect( () => { game1.getCPUInsertIndex() } ).toThrow();
 } )
+
+test('no player wins when board is full and game ended', () => {
+
+    // arrange
+
+        const game1 = new ConnectFour("madalina", "bianca");
+        const moves = [
+          0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 4, 4, 4, 4, 4,
+          4, 5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 3, 3, 3, 3, 3, 3, 6,
+        ];
+
+    // act
+       
+       moves.forEach( move => game1.insert(move));
+
+    // assert
+
+        expect(game1.ended).toEqual(true); 
+        expect(game1.winner).toEqual(undefined);
+
+    })
