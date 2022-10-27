@@ -26,12 +26,6 @@ const StartMenu: React.FC<IStartMenu> = ( props ) => {
           <img src={ playerVsPlayerImg } alt='player vs player' />
         </div>
       </Button>
-      <Button onClick={() => { onStart() } } backgroundColor={theme.colors.pink}>
-        <div className='start-button-content'>
-          <Heading size='S' color={theme.colors.white}>Play vs CPU</Heading>
-          <img src={ playerVsCPUImg } alt='player vs CPU' />
-        </div>
-      </Button>
       <Button onClick={() => { onRulesClick() }}>
         <Heading size='S'>Game rules</Heading>
       </Button>
