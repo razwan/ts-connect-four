@@ -27,7 +27,7 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
 
     const game = useMemo( () => context.currentGame!, [ context.currentGame ] )
     const board = useMemo( () => game.board, [ game.board ] );
-    const pointer = useMemo( () => game.currentPlayer === player1 ? Player1Pointer : Player2Pointer, [ game.currentPlayer ] );
+    const pointer = useMemo( () => game.currentPlayer === player1 ? Player1Pointer : Player2Pointer, [ game.currentPlayer, player1 ] );
     const [ winning, setWinning ] = useState<Array<[number, number]>>( [] );
 
     useEffect(() => {
@@ -50,7 +50,7 @@ const Board: React.FC<React.PropsWithChildren> = ( props ) => {
         } catch( error ) {
             console.log( error );
         }
-    }, [ game ] )
+    }, [ game, endGame, resetTimer, setCurrentPlayer ] )
 
     return (
         <>

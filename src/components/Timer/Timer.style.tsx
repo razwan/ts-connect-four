@@ -1,8 +1,5 @@
 import styled from "styled-components";
-import { theme } from "../../styles/Theme.style";
 import { LargeHeading, SmallHeading } from "../Heading/Heading.style";
-
-
 
 export const TimerWrapper = styled.div`
   text-align: center;

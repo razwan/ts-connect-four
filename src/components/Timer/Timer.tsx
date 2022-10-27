@@ -28,7 +28,7 @@ const Timer: React.FC<ITimer> = (props) => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [player]);
+  }, [ player, endGame, player1, player2, setTimer ]);
 
   const isPlayer1 = player === player1;
   const textColor = isPlayer1 ? theme.colors.white : theme.colors.black;

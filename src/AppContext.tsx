@@ -2,6 +2,7 @@ import React, {
   createContext,
   PropsWithChildren,
   useCallback,
+  useMemo,
   useState,
   useEffect,
 } from "react";
@@ -47,8 +48,8 @@ const withContextProvider: HOC = (Component) => {
     const [currentGame, setCurrentGame] = useState<ConnectFour<string> | undefined>();
     const [currentPlayer, setCurrentPlayer] = useState<string | undefined>();
     const [timer, setTimer] = useState<number>(30);
-    const [ player1, setPlayer1 ] = useState( 'player 1' );
-    const [ player2, setPlayer2 ] = useState( 'player 2' );
+    const player1 = useMemo( () => 'player 1', [] );
+    const player2 = useMemo( () => 'player 2', [] );
     
     const score = localStorage.getItem( 'pvpScore' );
     const initialScore = score ? JSON.parse( score ) : [0, 0];
@@ -63,28 +64,28 @@ const withContextProvider: HOC = (Component) => {
       localStorage.setItem( 'currentGame', JSON.stringify( currentGame ) );
     }, [ currentGame ] );
 
+    const quitGame = useCallback(() => {
+      setCurrentGame(undefined);
+    }, []);
+
+    const resetTimer = useCallback(() => {
+      setTimer(30);
+    }, []);
+
     const newGameVSPlayer = useCallback(( p1: string, p2: string) => {
       setCurrentGame(new ConnectFour(p1, p2));
       setCurrentPlayer( p1 );
       setWinner( undefined );
       setEnded( false );
       resetTimer();
-    }, []);
-
-    const quitGame = useCallback(() => {
-      setCurrentGame(undefined);
-    }, []);
+    }, [ resetTimer ] );
 
     const restartGame = useCallback(() => {
       setCurrentGame( new ConnectFour(currentGame!.player1, currentGame!.player2) );
       setWinner( undefined );
       setEnded( false );
       resetTimer();
-    }, []);
-
-    const resetTimer = useCallback(() => {
-      setTimer(30);
-    }, []);
+    }, [ currentGame, resetTimer ]);
 
     const endGame = useCallback(( winner: string ) => {
       setEnded( true );
@@ -100,7 +101,7 @@ const withContextProvider: HOC = (Component) => {
             setPlayerVsPlayerScore( [ playerVsPlayerScore[0], playerVsPlayerScore[1] + 1 ] );
         }
       }
-    }, [ playerVsPlayerScore ] );
+    }, [ playerVsPlayerScore, player1, player2 ] );
 
     const context: TAppContext = {
       showRules,
